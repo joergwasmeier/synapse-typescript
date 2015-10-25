@@ -7,6 +7,7 @@ import FlatButton = require('material-ui/lib/flat-button');
 import Paper = require('material-ui/lib/paper');
 import TextField = require('material-ui/lib/text-field');
 import Toggle = require('material-ui/lib/toggle');
+import CircularProgress = require('material-ui/lib/circular-progress');
 
 
 require("./Login.less");
@@ -22,8 +23,14 @@ class Login extends React.Component<{},{}> {
         who?:string
     }
 
+    state:{
+        busy?:boolean
+    }
+
     private onClickHandler(e:MouseEvent) {
-        new LoginUserEvent(this.userName, this.passWord).dispatch()
+        console.log("onClickHandler");
+        new LoginUserEvent(this.userName, this.passWord).dispatch();
+        this.setState({busy:true});
     }
 
     private changeUserNameHandler(e:SyntheticEvent) {
@@ -36,10 +43,21 @@ class Login extends React.Component<{},{}> {
         this.passWord = input.value;
     }
 
+   private renderProgress() {
+        if ( this.state && this.state.busy ) {
+            return (
+                <div className="busy">
+                    <CircularProgress mode="indeterminate" />
+                </div>
+            )
+        }
+    }
+
     render() {
         return (
             <div className="center">
                 <Paper className="loginCard">
+
                     <TextField className="textField"
                                floatingLabelText="Username"
                                onChange={this.changeUserNameHandler}/>
@@ -53,7 +71,10 @@ class Login extends React.Component<{},{}> {
                             value="toggleValue1"
                             label="Auto login?!"/>
 
-                    <FlatButton label="LOGIN" className="loginBt" primary={true}></FlatButton>
+                    <FlatButton label="LOGIN" className="loginBt" primary={true} onClick={e => this.onClickHandler(e)}></FlatButton>
+
+                    {this.renderProgress()}
+
                 </Paper>
             </div>
         )

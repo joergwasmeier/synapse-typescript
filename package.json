@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "test": "karma start",
-    "start": "webpack-dev-server --config webpack.conf.js --inline --hot",
+    "start": "webpack-dev-server --config webpack.conf.js --inline --hot --host 192.168.192.21",
     "deploy": "webpack --config webpack.conf.js"
   },
   "author": "",
