@@ -1,5 +1,5 @@
 import WebApplication = require("./de/jw/synapse/WebApplication");
-import LoginRouter = require("./de/js/login/controller/LoginRouter");
+import LoginMediator = require("./de/js/login/controller/LoginMediator");
 import LoginUserEvent = require("./de/js/login/controller/event/LoginUserEvent");
 import LoginShowEvent = require("./de/js/login/controller/event/LoginShowEvent");
 import SynapseEvent = require("./de/jw/synapse/core/SynapseEvent");
@@ -12,7 +12,7 @@ class A_Main extends WebApplication {
         super();
         injectTapEventPlugin();
 
-        this.addRouter(new LoginRouter());
+        this.addRouter(new LoginMediator());
 
         var ev:LoginShowEvent = new LoginShowEvent();
         ev.callBack = this.cjj;

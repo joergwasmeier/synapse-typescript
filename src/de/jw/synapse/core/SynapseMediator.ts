@@ -1,6 +1,6 @@
-export = SynapseRouter
+export = LoginMediator
 
-class SynapseRouter{
+class LoginMediator{
   cmdList = new Array<Object>();
 
   constructor(){
@@ -11,6 +11,7 @@ class SynapseRouter{
   }
 
   addSerivce(eventName, command){
+      
 
   }
 

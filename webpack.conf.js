@@ -2,7 +2,6 @@ var webpack = require('webpack');
 var path = require("path");
 
 module.exports = {
-  entry:'./src/A_Main.ts',
   output: {
     filename: 'bundle.js' // Template based on keys in entry above
   },
@@ -10,12 +9,16 @@ module.exports = {
     // Add `.ts` and `.tsx` as a resolvable extension.
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
   },
+  entry: [
+    'webpack-dev-server/client?http://localhost:8080/src/', // WebpackDevServer host and port
+    'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
+    './src/A_Main.ts' // Your appʼs entry point
+  ],
   devtool: 'source-map',
   module: {
     loaders: [
-      // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
       { test: /\.less$/, loader: 'style-loader!css-loader!less-loader'},
-      { test: /\.tsx?$/, loader: 'ts-loader' }
+      { test: /\.tsx?$/, loaders: ['react-hot', 'ts-loader'], include: path.join(__dirname, 'src')}
     ]
   }
 }

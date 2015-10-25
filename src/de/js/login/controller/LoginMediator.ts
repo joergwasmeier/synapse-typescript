@@ -1,10 +1,10 @@
-import SynapseRouter = require("../../../jw/synapse/core/SynapseRouter");
+import SynapseMediator = require("../../../jw/synapse/core/SynapseMediator");
 import LoginUserEvent = require("./event/LoginUserEvent");
 import LoginCommand = require("./command/LoginCommand");
 import LoginService = require('./service/LoginService');
 import LoginShowEvent = require("./event/LoginShowEvent");
 
-class LoginRouter extends SynapseRouter {
+class LoginMediator extends SynapseMediator {
     constructor() {
         super();
 
@@ -19,4 +19,4 @@ class LoginRouter extends SynapseRouter {
     }
 }
 
-export = LoginRouter;
+export = LoginMediator;

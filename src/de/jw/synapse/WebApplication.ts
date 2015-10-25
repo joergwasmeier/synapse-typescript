@@ -1,4 +1,4 @@
-import SynapseRouter = require("./core/SynapseRouter");
+import SynapseRouter = require("./core/SynapseMediator");
 import SynapseEvent = require("./core/SynapseEvent");
 import SynapseEventManager = require("./core/SynapseEventManager");
 

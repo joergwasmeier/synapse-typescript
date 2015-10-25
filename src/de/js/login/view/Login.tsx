@@ -57,21 +57,27 @@ class Login extends React.Component<{},{}> {
         return (
             <div className="center">
                 <Paper className="loginCard">
+                    <Paper className="title" zDepth={0}>
+                        <p>TIMEKEEPER</p>
+                    </Paper>
 
-                    <TextField className="textField"
-                               floatingLabelText="Username"
-                               onChange={this.changeUserNameHandler}/>
+                    <div className="content">
+                        <TextField className="textField"
+                                   floatingLabelText="Username"
+                                   onChange={this.changeUserNameHandler}/>
 
-                    <TextField className="textField"
-                               floatingLabelText="Password"
-                               type="password"
-                               onChange={this.changePassWordHandler}/>
+                        <TextField className="textField"
+                                   floatingLabelText="Password"
+                                   type="password"
+                                   onChange={this.changePassWordHandler}/>
 
-                    <Toggle name="toggleName1" className="autoLogin"
-                            value="toggleValue1"
-                            label="Auto login?!"/>
+                        <Toggle name="toggleName1" className="autoLogin"
+                                value="toggleValue1"
+                                label="Auto login?!"/>
 
-                    <FlatButton label="LOGIN" className="loginBt" primary={true} onClick={e => this.onClickHandler(e)}></FlatButton>
+                        <FlatButton label="LOGIN" className="loginBt" onClick={e => this.onClickHandler(e)}></FlatButton>
+                    </div>
+
 
                     {this.renderProgress()}
 
