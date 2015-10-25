@@ -2,17 +2,19 @@ import React = require('react');
 import ReactDOM = require('react-dom');
 import MouseEvent = __React.MouseEvent;
 
+export = Login;
+
 class Login extends React.Component<{},{}> {
-    props: {
+    static props: {
       who?:string
     }
 
-    onClickHandler(e:MouseEvent){
+    private onClickHandler(e:MouseEvent){
         console.log("Click Handler");
     }
 
-    changeUserNameHandler(){
-
+    private changeUserNameHandler(){
+        console.log("changeUserNameHandler");
     }
 
     render() {
@@ -24,4 +26,9 @@ class Login extends React.Component<{},{}> {
             </span>
         )
     }
+
+    public renderToDom(name:string = "container"){
+        ReactDOM.render(<Login/>, document.getElementById(name));
+    }
 }
+

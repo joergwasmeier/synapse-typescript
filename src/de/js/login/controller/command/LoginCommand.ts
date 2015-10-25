@@ -1,6 +1,7 @@
 import SynapseCommand = require("../../../../jw/synapse/core/SynapseCommand");
 import SynapseEvent = require("../../../../jw/synapse/core/SynapseEvent");
 import LoginShowEvent = require("../event/LoginShowEvent");
+import Login = require( "../../view/Login");
 
 
 class LoginCommand extends SynapseCommand {
@@ -16,6 +17,10 @@ class LoginCommand extends SynapseCommand {
 
     private loginShow(event:LoginShowEvent){
         console.log("loginShiw");
+
+        var login:Login = new Login();
+        login.renderToDom();
+
         event.callBack();
     }
 }
