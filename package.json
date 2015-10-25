@@ -4,14 +4,21 @@
   "description": "",
   "scripts": {
     "test": "karma start",
-    "start": "webpack-dev-server --config webpack.conf.js --inline --hot"
+    "start": "webpack-dev-server --config webpack.conf.js --inline --hot",
+    "deploy": "webpack --config webpack.conf.js"
   },
   "author": "",
   "license": "",
   "dependencies": {
+    "less": "*",
+    "material-ui": "^0.13.0",
     "react": "*",
+    "react-addons-create-fragment": "^0.14.0",
+    "react-addons-pure-render-mixin": "^0.14.0",
+    "react-addons-transition-group": "^0.14.0",
+    "react-addons-update": "^0.14.0",
     "react-dom": "*",
-    "less": "*"
+    "react-tap-event-plugin": "^0.2.1"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^0.14.0",

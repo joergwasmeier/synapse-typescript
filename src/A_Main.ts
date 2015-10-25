@@ -4,9 +4,13 @@ import LoginUserEvent = require("./de/js/login/controller/event/LoginUserEvent")
 import LoginShowEvent = require("./de/js/login/controller/event/LoginShowEvent");
 import SynapseEvent = require("./de/jw/synapse/core/SynapseEvent");
 
+import injectTapEventPlugin = require("react-tap-event-plugin");
+
+
 class A_Main extends WebApplication {
     constructor() {
         super();
+        injectTapEventPlugin();
 
         this.addRouter(new LoginRouter());
 
