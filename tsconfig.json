@@ -1,0 +1,48 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "sourceMap": true,
+        "moduleResolution": "node",
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "outDir": "./build/js/"
+    },
+    "path": {
+        "projectA": "/src"
+    },
+    "filesGlob": [
+        "**/*.ts",
+        "**/*.tsx",
+        "!node_modules/**"
+    ],
+    "files": [
+        "src/A_Main.ts",
+        "src/de/js/login/controller/command/LoginCommand.ts",
+        "src/de/js/login/controller/event/LoginUserEvent.ts",
+        "src/de/js/login/controller/LoginRouter.ts",
+        "src/de/js/login/controller/service/LoginService.ts",
+        "src/de/js/login/model/LoginModel.ts",
+        "src/de/jw/synapse/core/SynapseCommand.ts",
+        "src/de/jw/synapse/core/SynapseEvent.ts",
+        "src/de/jw/synapse/core/SynapseRouter.ts",
+        "src/de/jw/synapse/core/SynapseService.ts",
+        "src/de/jw/synapse/WebApplication.ts",
+        "typings/react-dom/react-dom.d.ts",
+        "typings/react/react.d.ts",
+        "typings/tsd.d.ts",
+        "build/js/de/js/login/view/LoginView.tsx",
+        "src/app.tsx",
+        "src/de/js/login/view/Login.tsx",
+        "src/de/js/test/Test.tsx",
+        "src/de/js/test/Test2.tsx"
+    ],
+    "exclude": []
+}

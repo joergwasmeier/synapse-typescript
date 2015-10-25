@@ -1,0 +1,44 @@
+{
+  "name": "typscript-test",
+  "version": "0.1.0",
+  "description": "",
+  "scripts": {
+    "test": "karma start",
+    "start": "webpack-dev-server --config webpack.conf.js --inline --hot"
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "less": "*"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^0.14.0",
+    "css-loader": "^0.18.0",
+    "expect": "*",
+    "file-loader": "^0.8.4",
+    "gulp": "^3.9.0",
+    "gulp-rename": "^1.2.2",
+    "html-webpack-plugin": "*",
+    "karma": "*",
+    "karma-chrome-launcher": "*",
+    "karma-coffee-preprocessor": "*",
+    "karma-mocha": "*",
+    "karma-mocha-reporter": "*",
+    "karma-phantomjs2-launcher": "*",
+    "karma-sourcemap-loader": "*",
+    "karma-webpack": "*",
+    "less-loader": "^2.2.0",
+    "mocha": "*",
+    "react-hot-loader": "^1.2.3",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "^0.12.3",
+    "stylus-loader": "^1.0.0",
+    "ts-loader": "*",
+    "typescript": "*",
+    "url-loader": "^0.5.6",
+    "webpack": "*",
+    "webpack-dev-server": "*"
+  }
+}
