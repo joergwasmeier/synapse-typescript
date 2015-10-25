@@ -1,6 +1,6 @@
 {
-  "name": "typscript-test",
-  "version": "0.1.0",
+  "name": "synapse-typescript",
+  "version": "0.0.1",
   "description": "",
   "scripts": {
     "test": "karma start",
@@ -23,7 +23,6 @@
     "html-webpack-plugin": "*",
     "karma": "*",
     "karma-chrome-launcher": "*",
-    "karma-coffee-preprocessor": "*",
     "karma-mocha": "*",
     "karma-mocha-reporter": "*",
     "karma-phantomjs2-launcher": "*",

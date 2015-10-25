@@ -1,13 +1,14 @@
+export = LoginService;
+
 class LoginService{
   public exexute(event,name){
     console.log("Execute");
-    switch(name){
-      case LoginUserEvent.LOGIN:
-        this.loginUser();
-    }
+//    switch(name){
+
+  //  }
   }
 
-  loginUser(){
-    console.log("LoginUser");
-  }
+//  loginUser(){
+//    console.log("LoginUser");
+//  }
 }

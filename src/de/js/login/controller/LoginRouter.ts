@@ -1,14 +1,22 @@
 import SynapseRouter = require("../../../jw/synapse/core/SynapseRouter");
+import LoginUserEvent = require("./event/LoginUserEvent");
+import LoginCommand = require("./command/LoginCommand");
+import LoginService = require('./service/LoginService');
+import LoginShowEvent = require("./event/LoginShowEvent");
 
-class LoginRouter extends SynapseRouter{
-  constructor(){
-    this.addCommand(LoginUserEvent, LoginCommand);
-    this.addSerivce(LoginUserEvent, LoginCommand);
+class LoginRouter extends SynapseRouter {
+    constructor() {
+        super();
 
-    this.addCommServ(LoginUserEvent, LoginCommand, LoginService);
+        //this.addCommand(LoginUserEvent, LoginCommand);
+        this.addCommand(LoginShowEvent, LoginCommand);
 
-    super();
-  }
+        this.addSerivce(LoginUserEvent, LoginCommand);
+
+        this.addCommServ(LoginUserEvent, LoginCommand, LoginService);
+
+
+    }
 }
 
 export = LoginRouter;

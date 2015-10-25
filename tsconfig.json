@@ -26,6 +26,7 @@
     "files": [
         "src/A_Main.ts",
         "src/de/js/login/controller/command/LoginCommand.ts",
+        "src/de/js/login/controller/event/LoginShowEvent.ts",
         "src/de/js/login/controller/event/LoginUserEvent.ts",
         "src/de/js/login/controller/LoginRouter.ts",
         "src/de/js/login/controller/service/LoginService.ts",
@@ -38,7 +39,6 @@
         "typings/react-dom/react-dom.d.ts",
         "typings/react/react.d.ts",
         "typings/tsd.d.ts",
-        "build/js/de/js/login/view/LoginView.tsx",
         "src/app.tsx",
         "src/de/js/login/view/Login.tsx",
         "src/de/js/test/Test.tsx",

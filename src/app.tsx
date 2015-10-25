@@ -1,3 +1,4 @@
+/*
 import React = require('react');
 import ReactDOM = require('react-dom');
 
@@ -23,3 +24,4 @@ class MyComponent extends React.Component<{},{}> {
 }
 
 ReactDOM.render(<MyComponent who="Hallo" />, document.getElementById("container"));
+*/

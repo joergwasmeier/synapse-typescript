@@ -1,21 +1,27 @@
 import React = require('react');
 import ReactDOM = require('react-dom');
+import MouseEvent = __React.MouseEvent;
 
-import LoginUserEvent = require("../controller/event/LoginUserEvent");
-
-
-class MyComponent extends React.Component<{},{}> {
+class Login extends React.Component<{},{}> {
     props: {
       who?:string
     }
 
     onClickHandler(e:MouseEvent){
-      console.log(LoginUserEvent.LOGIN);
+        console.log("Click Handler");
+    }
+
+    changeUserNameHandler(){
+
     }
 
     render() {
-        return <span>
-          
-        </span>
+        return(
+            <span>
+              <div>Login</div>
+              <input placeholder="Username" onChange={this.changeUserNameHandler}/>
+              <button onClick={this.onClickHandler}>LOGIN</button>
+            </span>
+        )
     }
 }
