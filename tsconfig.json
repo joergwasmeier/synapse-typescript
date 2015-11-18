@@ -12,7 +12,8 @@
         "noLib": false,
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
-        "outDir": "./build/js/"
+        "outDir": "./build/js/",
+        "rootDir": "./src"
     },
     "path": {
         "projectA": "/src"
@@ -22,9 +23,7 @@
         "**/*.tsx",
         "!node_modules/**"
     ],
-    "exclude": []
-}
-/*
+    "exclude": [],
     "files": [
         "src/A_Main.ts",
         "src/de/js/login/controller/command/LoginCommand.ts",
@@ -51,4 +50,4 @@
         "src/de/js/test/Test.tsx",
         "src/de/js/test/Test2.tsx"
     ]
-    */
+}
