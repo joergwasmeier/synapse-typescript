@@ -1,10 +1,10 @@
-import SynapseMediator = require("../../../jw/synapse/core/SynapseMediator");
-import LoginUserEvent = require("./event/LoginUserEvent");
-import LoginCommand = require("./command/LoginCommand");
-import LoginService = require('./service/LoginService');
-import LoginShowEvent = require("./event/LoginShowEvent");
+import SynapseMediator from "../../../jw/synapse/core/SynapseMediator";
+import LoginUserEvent from "./event/LoginUserEvent";
+import LoginCommand from "./command/LoginCommand";
+import LoginService from './service/LoginService';
+import LoginShowEvent from "./event/LoginShowEvent";
 
-class LoginMediator extends SynapseMediator {
+export default class LoginMediator extends SynapseMediator {
     constructor() {
         super();
 
@@ -18,5 +18,3 @@ class LoginMediator extends SynapseMediator {
 
     }
 }
-
-export = LoginMediator;

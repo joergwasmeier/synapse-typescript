@@ -1,20 +1,20 @@
-import WebApplication = require("./de/jw/synapse/WebApplication");
-import LoginMediator = require("./de/js/login/controller/LoginMediator");
-import LoginUserEvent = require("./de/js/login/controller/event/LoginUserEvent");
-import LoginShowEvent = require("./de/js/login/controller/event/LoginShowEvent");
-import SynapseEvent = require("./de/jw/synapse/core/SynapseEvent");
+import WebApplication from "./de/jw/synapse/WebApplication";
+import LoginMediator from "./de/js/login/controller/LoginMediator";
+import LoginUserEvent from "./de/js/login/controller/event/LoginUserEvent";
+import LoginShowEvent from "./de/js/login/controller/event/LoginShowEvent";
 
-import injectTapEventPlugin = require("react-tap-event-plugin");
-
+import SynapseEvent from './de/jw/synapse/core/SynapseEvent';
+import * as injectTapEventPlugin from "react-tap-event-plugin";
 
 class A_Main extends WebApplication {
     constructor() {
         super();
-        injectTapEventPlugin();
+
+        //console.log(injectTapEventPlugin);
 
         this.addRouter(new LoginMediator());
 
-        var ev:LoginShowEvent = new LoginShowEvent();
+        var ev:LoginShowEvent = new LoginShowEvent();       
         ev.callBack = this.cjj;
         ev.dispatch();
         //super.dispatchEvent();

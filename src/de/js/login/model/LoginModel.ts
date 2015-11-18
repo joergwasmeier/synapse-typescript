@@ -1,4 +1,4 @@
-class LoginModel {
+export default class LoginModel {
 
     private static _instance:LoginModel = new LoginModel();
 
@@ -36,5 +36,3 @@ class LoginModel {
         this._score -= value;
     }
   }
-
-  export = LoginModel;

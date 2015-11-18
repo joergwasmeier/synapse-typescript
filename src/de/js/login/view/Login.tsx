@@ -1,20 +1,17 @@
-import React = require('react');
-import ReactDOM = require('react-dom');
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import MouseEvent = __React.MouseEvent;
 import SyntheticEvent = __React.SyntheticEvent;
-import LoginUserEvent = require("../controller/event/LoginUserEvent");
-import FlatButton = require('material-ui/lib/flat-button');
-import Paper = require('material-ui/lib/paper');
-import TextField = require('material-ui/lib/text-field');
-import Toggle = require('material-ui/lib/toggle');
-import CircularProgress = require('material-ui/lib/circular-progress');
+//import LoginUserEvent from "../controller/event/LoginUserEvent";
 
+import LoginUserEvent from "de/js/login/controller/event/LoginUserEvent";
+
+
+import {CircularProgress, Toggle, TextField, Paper, FlatButton} from 'material-ui';
 
 require("./Login.less");
 
-export = Login;
-
-class Login extends React.Component<{},{}> {
+export default class Login extends React.Component<{},{}> {
     className:string = "Login";
     userName:string;
     passWord:string;
@@ -90,4 +87,3 @@ class Login extends React.Component<{},{}> {
         ReactDOM.render(<Login/>, document.getElementById(name));
     }
 }
-

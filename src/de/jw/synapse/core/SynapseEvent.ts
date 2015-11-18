@@ -1,14 +1,12 @@
-import WebApplication = require("../WebApplication");
-export = SynapseEvent
+import WebApplication from "../WebApplication";
 
-class SynapseEvent {
+export default class SynapseEvent {
     public name:String;
     public callBack:any = function(){};
 
     private cbs:any;
 
     constructor() {
-        console.log("SynapseEvent");
     }
 
     setCallBack(func:any){

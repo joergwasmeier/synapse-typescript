@@ -1,13 +1,10 @@
-export = SynapseCommand
+import SynapseEvent from "./SynapseEvent";
 
-import SynapseEvent = require("./SynapseEvent");
-
-class SynapseCommand{
+export default class SynapseCommand{
   constructor(){
-    console.log("SynapseCommand");
   }
 
   execute(event:SynapseEvent){
-    
+
   }
 }

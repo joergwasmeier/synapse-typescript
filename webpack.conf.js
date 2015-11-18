@@ -18,7 +18,7 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.less$/, loader: 'style-loader!css-loader!less-loader'},
-      { test: /\.tsx?$/, loaders: ['react-hot', 'ts-loader'], include: path.join(__dirname, 'src')}
+      { test: /\.tsx?$/, loaders: ['react-hot', 'babel-loader', 'ts-loader'], include: path.join(__dirname, 'src')}
     ]
   }
 }

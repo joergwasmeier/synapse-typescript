@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
+        "target": "es6",
         "sourceMap": true,
         "moduleResolution": "node",
         "jsx": "react",
@@ -23,6 +22,9 @@
         "**/*.tsx",
         "!node_modules/**"
     ],
+    "exclude": []
+}
+/*
     "files": [
         "src/A_Main.ts",
         "src/de/js/login/controller/command/LoginCommand.ts",
@@ -33,16 +35,20 @@
         "src/de/js/login/model/LoginModel.ts",
         "src/de/jw/synapse/core/SynapseCommand.ts",
         "src/de/jw/synapse/core/SynapseEvent.ts",
+        "src/de/jw/synapse/core/SynapseEventManager.ts",
         "src/de/jw/synapse/core/SynapseMediator.ts",
+        "src/de/jw/synapse/core/SynapseModel.ts",
         "src/de/jw/synapse/core/SynapseService.ts",
         "src/de/jw/synapse/WebApplication.ts",
+        "typings/material-ui/material-ui.d.ts",
         "typings/react-dom/react-dom.d.ts",
+        "typings/react-tap-event-plugin/react-tap-event-plugin.d.ts",
         "typings/react/react.d.ts",
+        "typings/requirejs/require.d.ts",
         "typings/tsd.d.ts",
         "src/app.tsx",
         "src/de/js/login/view/Login.tsx",
         "src/de/js/test/Test.tsx",
         "src/de/js/test/Test2.tsx"
-    ],
-    "exclude": []
-}
+    ]
+    */

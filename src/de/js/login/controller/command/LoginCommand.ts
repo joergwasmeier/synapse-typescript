@@ -1,10 +1,9 @@
-import SynapseCommand = require("../../../../jw/synapse/core/SynapseCommand");
-import SynapseEvent = require("../../../../jw/synapse/core/SynapseEvent");
-import LoginShowEvent = require("../event/LoginShowEvent");
-import Login = require( "../../view/Login");
+import SynapseCommand from "../../../../jw/synapse/core/SynapseCommand";
+import SynapseEvent from "../../../../jw/synapse/core/SynapseEvent";
+import LoginShowEvent from "../event/LoginShowEvent";
+import Login from  "../../view/Login";
 
-
-class LoginCommand extends SynapseCommand {
+export default class LoginCommand extends SynapseCommand {
     constructor() {
         super();
     }
@@ -16,13 +15,9 @@ class LoginCommand extends SynapseCommand {
     }
 
     private loginShow(event:LoginShowEvent){
-        console.log("loginShiw");
-
         var login:Login = new Login();
         login.renderToDom();
 
         event.callBack();
     }
 }
-
-export = LoginCommand

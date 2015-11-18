@@ -1,6 +1,6 @@
 import "./Test.less";
-import React = require('react');
-import LoginModel = require('../login/model/LoginModel');
+import * as React from 'react';
+import LoginModel from '../login/model/LoginModel';
 
 class Test extends React.Component<{},{}> {
     public clickHandler():void{
@@ -15,5 +15,3 @@ class Test extends React.Component<{},{}> {
         </span>
     }
 }
-
-export = Test;

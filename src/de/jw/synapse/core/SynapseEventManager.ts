@@ -3,10 +3,9 @@
  */
 
 
-import SynapseEvent = require("./SynapseEvent");
-export = SynapseEventManager;
+import SynapseEvent from "./SynapseEvent";
 
-class SynapseEventManager{
+export default class SynapseEventManager{
     constructor(){
 
     }

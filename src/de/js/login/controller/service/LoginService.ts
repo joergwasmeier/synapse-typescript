@@ -1,6 +1,4 @@
-export = LoginService;
-
-class LoginService{
+export default class LoginService{
   public exexute(event,name){
     console.log("Execute");
 //    switch(name){

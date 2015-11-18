@@ -1,6 +1,4 @@
-export = LoginMediator
-
-class LoginMediator{
+export default class LoginMediator{
   cmdList = new Array<Object>();
 
   constructor(){
@@ -11,7 +9,7 @@ class LoginMediator{
   }
 
   addSerivce(eventName, command){
-      
+
 
   }
 

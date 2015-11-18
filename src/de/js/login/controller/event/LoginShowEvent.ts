@@ -1,14 +1,15 @@
-import SynapseEvent = require("../../../../jw/synapse/core/SynapseEvent");
+import SynapseEvent from "../../../../jw/synapse/core/SynapseEvent";
 
-class LoginShowEvent extends SynapseEvent {
-    public static name:String = "LoginShowEvent";
+export default class LoginShowEvent extends SynapseEvent {
+  //  public static name:String = "LoginShowEvent";
     public static SHOW:String = "SHOW";
-    public name:String;
+
+    name:String = "LoginShowEvent";
+
     constructor() {
-        this.name = LoginShowEvent.name;
         super();
+
+        //this.name = LoginShowEvent.name;
     }
 
 }
-
-export = LoginShowEvent

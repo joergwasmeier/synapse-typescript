@@ -1,8 +1,8 @@
-import SynapseRouter = require("./core/SynapseMediator");
-import SynapseEvent = require("./core/SynapseEvent");
-import SynapseEventManager = require("./core/SynapseEventManager");
+import SynapseRouter from "./core/SynapseMediator";
+import SynapseEvent from "./core/SynapseEvent";
+import SynapseEventManager from "./core/SynapseEventManager";
 
-class WebApplication {
+export default class WebApplication {
     static routers:Array<SynapseRouter> = new Array<SynapseRouter>();
     static eventManager = new SynapseEventManager();
 
@@ -18,14 +18,8 @@ class WebApplication {
             var routeItem:Array<any> = this.routers[a].cmdList;
 
             for(var b:number = 0; b < routeItem.length; b++){
-                console.log(event.name);
-                console.log(routeItem[b].event.name);
-
                 if (routeItem[b].event.name === event.name){
-                    console.log("Found");
-                    console.log(routeItem[b].cmd);
                     new routeItem[b].cmd().execute(event);
-
                 }
             }
 
@@ -34,5 +28,3 @@ class WebApplication {
         }
     }
 }
-
-export = WebApplication;
