@@ -27,7 +27,8 @@ export default class Login extends React.Component<{},{}> {
         this.setState({busy: true});
     }
 
-    private changeUserNameHandler(e:SyntheticEvent):void {
+
+    private changeUserNameHandler = (e:SyntheticEvent):void => {
         var input:HTMLInputElement = e.target as HTMLInputElement
         this.userName = input.value;
     }
@@ -47,7 +48,7 @@ export default class Login extends React.Component<{},{}> {
         }
     }
 
-    render():JSX.Element {
+    render() {
         return (
             <div className={`center ${this.className}`}>
                 <Paper className="loginCard">
@@ -59,12 +60,12 @@ export default class Login extends React.Component<{},{}> {
 
                         <TextField className="textField"
                                    floatingLabelText="Username"
-                                   onChange={this.changeUserNameHandler}/>
+                                   onChange={this.changeUserNameHandler.bind(this)}/>
 
                         <TextField className="textField"
                                    floatingLabelText="Password"
                                    type="password"
-                                   onChange={this.changePassWordHandler}/>
+                                   onChange={this.changePassWordHandler.bind(this)}/>
 
                         <Toggle name="toggleName1" className="autoLogin"
                                 value="toggleValue1"
