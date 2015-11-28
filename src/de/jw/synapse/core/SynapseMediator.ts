@@ -1,4 +1,4 @@
-export default class LoginMediator{
+export default class SynapseMediator{
   cmdList = new Array<Object>();
 
   constructor(){

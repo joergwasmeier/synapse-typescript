@@ -1,4 +1,4 @@
-import SynapseEvent from "../../../../jw/synapse/core/SynapseEvent";
+import SynapseEvent from "../../../../../jw/synapse/core/SynapseEvent";
 
 export default class LoginShowEvent extends SynapseEvent {
   //  public static name:String = "LoginShowEvent";
@@ -8,7 +8,6 @@ export default class LoginShowEvent extends SynapseEvent {
 
     constructor() {
         super();
-
         //this.name = LoginShowEvent.name;
     }
 

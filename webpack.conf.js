@@ -14,7 +14,7 @@ module.exports = {
     'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
     './src/A_Main.ts' // Your appʼs entry point
   ],
-  devtool: 'source-map',
+  devtool: 'eval',
   module: {
     loaders: [
       { test: /\.less$/, loader: 'style-loader!css-loader!less-loader'},

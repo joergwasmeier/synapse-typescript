@@ -25,29 +25,45 @@ body{
 }
 
 .busy{
+  position: absolute;
+
   width: 100%;
   height: 100%;
   background-color: rgba(255,255,255,0.8);
-  position: absolute;
+
   top:0px;
   left:0px;
+
+  >div{
+    display: inline-block;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    margin-left: -25px !important;
+    margin-top: -25px !important;
+  }
 }
 
 .center{
-  @media (min-width: 768px) {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
+
     width: 100vw;
     height: 100vh;
+
+  @media screen and (min-height: 600px){
+    align-items: center;
   }
 }
 
 .loginCard{
   position: relative;
-  @media (min-width: 768px) {
-    width: 512px !important;
-  }
+  width: ~"calc(100% - 32px)" !important;
+  max-width: 512px !important;
+  min-width: 312px !important;
+
+
 
   .title{
     position: relative;
@@ -64,7 +80,7 @@ body{
     }
   }
 
-  width: 100% !important;
+  margin: 16px;
 
   .content{
     padding: 0px 32px 32px 32px;

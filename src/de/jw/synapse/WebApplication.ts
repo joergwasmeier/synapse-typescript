@@ -9,13 +9,21 @@ export default class WebApplication {
     constructor() {
     }
 
-    public addMediator(cls:SynapseMediator):void {
+    public addMediator(cls:SynapseMediator):boolean {
+        for (var obj in WebApplication.mediators) {
+            if (obj == cls) return false;
+        }
+
         WebApplication.mediators.push(cls);
+        return true;
     }
 
     static dispatchEvent(event:SynapseEvent) {
+        console.log(event);
+
         for(var a:number = 0; a < 1; a++){
             var routeItem:Array<any> = this.mediators[a].cmdList;
+
 
             for(var b:number = 0; b < routeItem.length; b++){
                 if (routeItem[b].event.name === event.name){
@@ -24,4 +32,6 @@ export default class WebApplication {
             }
         }
     }
+
+
 }

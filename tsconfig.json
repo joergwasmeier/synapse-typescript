@@ -26,12 +26,12 @@
     "exclude": [],
     "files": [
         "src/A_Main.ts",
-        "src/de/js/login/controller/command/LoginCommand.ts",
-        "src/de/js/login/controller/event/LoginShowEvent.ts",
-        "src/de/js/login/controller/event/LoginUserEvent.ts",
-        "src/de/js/login/controller/LoginMediator.ts",
-        "src/de/js/login/controller/service/LoginService.ts",
-        "src/de/js/login/model/LoginModel.ts",
+        "src/de/js/timekeeper/login/controller/command/LoginCommand.ts",
+        "src/de/js/timekeeper/login/controller/event/LoginShowEvent.ts",
+        "src/de/js/timekeeper/login/controller/event/LoginUserEvent.ts",
+        "src/de/js/timekeeper/login/controller/LoginMediator.ts",
+        "src/de/js/timekeeper/login/controller/service/LoginService.ts",
+        "src/de/js/timekeeper/login/model/LoginModel.ts",
         "src/de/jw/synapse/core/SynapseCommand.ts",
         "src/de/jw/synapse/core/SynapseEvent.ts",
         "src/de/jw/synapse/core/SynapseEventManager.ts",
@@ -46,8 +46,6 @@
         "typings/requirejs/require.d.ts",
         "typings/tsd.d.ts",
         "src/app.tsx",
-        "src/de/js/login/view/Login.tsx",
-        "src/de/js/test/Test.tsx",
-        "src/de/js/test/Test2.tsx"
+        "src/de/js/timekeeper/login/view/Login.tsx"
     ]
 }

@@ -6,9 +6,10 @@ import SyntheticEvent = __React.SyntheticEvent;
 
 import {CircularProgress, Toggle, TextField, Paper, FlatButton} from 'material-ui';
 import LoginUserEvent from "../controller/event/LoginUserEvent";
+import LoginModel from "../model/LoginModel";
+import SynapseModel from "../../../../jw/synapse/core/SynapseModel";
 
 var CSSTransitionGroup = require('react-addons-css-transition-group');
-
 require("./Login.less");
 
 export default class Login extends React.Component<{},{}> {
@@ -24,9 +25,22 @@ export default class Login extends React.Component<{},{}> {
         busy?:boolean
     }
 
+    bindToModel(instance:SynapseModel){
+
+    }
+
+    componentWillMount():void {
+        LoginModel.name = "Login";
+        LoginModel.addChangeListener( () => this.forceUpdate());
+    }
+
+
+    componentWillUnmount():void {
+        //LoginModel.removeChangeListener( () => this.forceUpdate());
+    }
+
     private onClickHandler(e:MouseEvent):void {
         new LoginUserEvent(this.userName, this.passWord).dispatch();
-        this.setState({busy: true});
     }
 
     private changeUserNameHandler = (e:SyntheticEvent):void => {
@@ -40,7 +54,7 @@ export default class Login extends React.Component<{},{}> {
     }
 
     private renderProgress():JSX.Element {
-        if (this.state && this.state.busy) {
+        if (LoginModel.busy) {
             return (
                 <div className="busy">
                     <CircularProgress mode="indeterminate"/>
@@ -54,7 +68,7 @@ export default class Login extends React.Component<{},{}> {
             <div className={`center ${this.className}`}>
                 <Paper className="loginCard">
                     <Paper className="title" zDepth={0}>
-                        <p>TIMEKEEPER</p>
+                        <p>{LoginModel.name}</p>
                     </Paper>
 
                     <div className="content">
