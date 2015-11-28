@@ -10,14 +10,11 @@ class A_Main extends WebApplication {
     constructor() {
         super();
 
-        //console.log(injectTapEventPlugin);
-
-        this.addRouter(new LoginMediator());
+        this.addMediator(new LoginMediator());
 
         var ev:LoginShowEvent = new LoginShowEvent();       
         ev.callBack = this.cjj;
         ev.dispatch();
-        //super.dispatchEvent();
     }
 
     cjj(ev:SynapseEvent){

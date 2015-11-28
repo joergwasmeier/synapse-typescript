@@ -7,6 +7,8 @@ import SyntheticEvent = __React.SyntheticEvent;
 import {CircularProgress, Toggle, TextField, Paper, FlatButton} from 'material-ui';
 import LoginUserEvent from "../controller/event/LoginUserEvent";
 
+var CSSTransitionGroup = require('react-addons-css-transition-group');
+
 require("./Login.less");
 
 export default class Login extends React.Component<{},{}> {
@@ -26,7 +28,6 @@ export default class Login extends React.Component<{},{}> {
         new LoginUserEvent(this.userName, this.passWord).dispatch();
         this.setState({busy: true});
     }
-
 
     private changeUserNameHandler = (e:SyntheticEvent):void => {
         var input:HTMLInputElement = e.target as HTMLInputElement
@@ -60,23 +61,24 @@ export default class Login extends React.Component<{},{}> {
 
                         <TextField className="textField"
                                    floatingLabelText="Username"
-                                   onChange={this.changeUserNameHandler.bind(this)}/>
+                                   onChange={e => this.changeUserNameHandler(e)}/>
 
                         <TextField className="textField"
                                    floatingLabelText="Password"
                                    type="password"
-                                   onChange={this.changePassWordHandler.bind(this)}/>
+                                   onChange={e => this.changePassWordHandler(e)}/>
 
                         <Toggle name="toggleName1" className="autoLogin"
                                 value="toggleValue1"
-                                label="Auto login?!"/>
+                                label="Auto login?!" />
 
                         <FlatButton label="LOGIN" className="loginBt"
                                     onClick={e => this.onClickHandler(e)}></FlatButton>
                     </div>
 
-                    {this.renderProgress()}
-
+                    <CSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+                        {this.renderProgress()}
+                    </CSSTransitionGroup>
                 </Paper>
             </div>
         )
