@@ -25,27 +25,21 @@ export default class Login extends React.Component<{},{}> {
         busy?:boolean
     }
 
-    bindToModel(instance:SynapseModel){
-
-    }
-
     componentWillMount():void {
-        LoginModel.name = "Login";
         LoginModel.addChangeListener( () => this.forceUpdate());
     }
 
-
     componentWillUnmount():void {
-        //LoginModel.removeChangeListener( () => this.forceUpdate());
+        LoginModel.removeChangeListener( () => this.forceUpdate());
     }
 
     private onClickHandler(e:MouseEvent):void {
         new LoginUserEvent(this.userName, this.passWord).dispatch();
     }
 
-    private changeUserNameHandler = (e:SyntheticEvent):void => {
+    private changeUserNameHandler(e:SyntheticEvent):void{
         var input:HTMLInputElement = e.target as HTMLInputElement
-        this.userName = input.value;
+        LoginModel.userName = input.value;
     }
 
     private changePassWordHandler(e:SyntheticEvent):void {
