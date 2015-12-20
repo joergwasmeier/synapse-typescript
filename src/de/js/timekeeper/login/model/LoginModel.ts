@@ -2,7 +2,6 @@ import SynapseModel from "../../../../jw/synapse/core/SynapseModel";
 import Bindable from "../../../../jw/synapse/decorators/Bindable";
 import UserVo from "./vo/UserVo";
 
-
 class LoginModel_in extends SynapseModel {
 
     private static _instance:LoginModel_in = new LoginModel_in();

@@ -5,6 +5,7 @@
   "scripts": {
     "test": "karma start",
     "start": "webpack-dev-server --config webpack.conf.js --inline --hot",
+    "server": "webpack --watch --config webpack-backend.conf.js",
     "deploy": "webpack --config webpack-deploy.conf.js"
   },
   "author": "",

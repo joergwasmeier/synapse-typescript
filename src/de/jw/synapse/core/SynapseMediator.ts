@@ -1,7 +1,16 @@
-export default class SynapseMediator{
+import {ISynapseMediator} from "./ISynapseMediator";
+
+export default class SynapseMediator implements ISynapseMediator{
   cmdList = new Array<Object>();
 
   constructor(){
+    // @ifdef CLIENT
+    this.registerCommands();
+    // @endif
+
+    // @ifdef SERVER
+    this.registerServices();
+    // @endif
   }
 
   addCommand(eventName, command){
@@ -10,10 +19,13 @@ export default class SynapseMediator{
 
   addSerivce(eventName, command){
 
+  }
+
+  registerCommands(){
 
   }
 
-  addCommServ(eventName, command, serive){
+  registerServices(){
 
   }
 }
