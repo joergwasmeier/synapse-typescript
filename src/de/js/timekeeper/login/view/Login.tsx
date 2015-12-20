@@ -14,8 +14,6 @@ require("./Login.less");
 
 export default class Login extends React.Component<{},{}> {
     className:string = "Login";
-    userName:string;
-    passWord:string;
 
     static props:{
         who?:string
@@ -34,7 +32,16 @@ export default class Login extends React.Component<{},{}> {
     }
 
     private onClickHandler(e:MouseEvent):void {
-        new LoginUserEvent(this.userName, this.passWord).dispatch();
+        new LoginUserEvent(LoginModel.userName, LoginModel.passWord).dispatch();
+
+        //@ifdef NODE
+        console.log("SSTEST");
+
+        //@endif
+
+        /* @if NODE */
+        console.log("SSTEST 2");
+        /* @endif */
     }
 
     private changeUserNameHandler(e:SyntheticEvent):void{
@@ -44,7 +51,7 @@ export default class Login extends React.Component<{},{}> {
 
     private changePassWordHandler(e:SyntheticEvent):void {
         var input:HTMLInputElement = e.target as HTMLInputElement
-        this.passWord = input.value;
+        LoginModel.passWord = input.value;
     }
 
     private renderProgress():JSX.Element {
@@ -62,26 +69,28 @@ export default class Login extends React.Component<{},{}> {
             <div className={`center ${this.className}`}>
                 <Paper className="loginCard">
                     <Paper className="title" zDepth={0}>
-                        <p>{LoginModel.name}</p>
+                        <p>{LoginModel.userName}</p>
                     </Paper>
 
                     <div className="content">
 
                         <TextField className="textField"
                                    floatingLabelText="Username"
+                                   value={LoginModel.userName}
                                    onChange={e => this.changeUserNameHandler(e)}/>
 
                         <TextField className="textField"
                                    floatingLabelText="Password"
                                    type="password"
+                                   value={LoginModel.passWord}
                                    onChange={e => this.changePassWordHandler(e)}/>
 
-                        <Toggle name="toggleName1" className="autoLogin"
-                                value="toggleValue1"
+                        <Toggle className="autoLogin"
+                                value={LoginModel.autoLogin}
                                 label="Auto login?!" />
 
                         <FlatButton label="LOGIN" className="loginBt"
-                                    onClick={e => this.onClickHandler(e)}></FlatButton>
+                                    onClick={e => this.onClickHandler(e)} />
                     </div>
 
                     <CSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>

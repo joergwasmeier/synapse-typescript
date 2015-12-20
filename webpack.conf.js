@@ -14,24 +14,11 @@ module.exports = {
     'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
     './src/A_Main.ts' // Your appʼs entry point
   ],
-  devtool: 'eval',
+  devtool: '#eval',
   module: {
     loaders: [
       { test: /\.less$/, loader: 'style-loader!css-loader!less-loader'},
-      { test: /\.tsx?$/, loaders: ['react-hot', 'babel-loader', 'ts-loader'], include: path.join(__dirname, 'src')}
+      { test: /\.tsx?$/, loader: 'react-hot!babel-loader!ts-loader!preprocess?+CLIENT', include: path.join(__dirname, 'src')}
     ]
   }
 }
-
-
-/*
-entry: {
-    main:'./src/app.tsx',
-    feed:'./src/A_Main.ts',
-    parent:'./src/A_Main.ts',
-},
-output: {
-  path: 'dist',
-  filename: '[name].js' // Template based on keys in entry above
-},
-*/

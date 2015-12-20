@@ -1,15 +1,29 @@
 import SynapseModel from "../../../../jw/synapse/core/SynapseModel";
 import Bindable from "../../../../jw/synapse/decorators/Bindable";
+import UserVo from "./vo/UserVo";
 
-export class LoginModel_in extends SynapseModel {
+
+class LoginModel_in extends SynapseModel {
 
     private static _instance:LoginModel_in = new LoginModel_in();
 
     @Bindable
-    name:string;
+    name:String;
 
     @Bindable
-    busy:boolean;
+    busy:Boolean;
+
+    @Bindable
+    userName:string;
+
+    @Bindable
+    passWord:string;
+
+    @Bindable
+    autoLogin:string;
+
+    @Bindable
+    userData:UserVo;
 
     constructor() {
         super();
@@ -22,15 +36,6 @@ export class LoginModel_in extends SynapseModel {
 
     public static getInstance():LoginModel_in {
         return LoginModel_in._instance;
-    }
-
-
-    addChangeListener(cb) {
-        return super.addChangeListener(cb);
-    }
-
-    removeChangeListener(cb) {
-        return super.removeChangeListener(cb);
     }
 }
 

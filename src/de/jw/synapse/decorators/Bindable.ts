@@ -1,7 +1,3 @@
-/**
- * Created by creativecode on 28.11.15.
- */
-
 export default function Bindable(target:any, key:string) {
     // property value
     var _val = target[key];

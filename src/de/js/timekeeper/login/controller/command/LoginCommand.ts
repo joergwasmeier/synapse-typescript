@@ -5,6 +5,7 @@ import SynapseCommand from "../../../../../jw/synapse/core/SynapseCommand";
 import SynapseEvent from "../../../../../jw/synapse/core/SynapseEvent";
 import LoginUserEvent from "../event/LoginUserEvent";
 import LoginModel from "../../model/LoginModel";
+import UserVo from "../../model/vo/UserVo";
 
 export default class LoginCommand extends SynapseCommand {
     constructor() {
@@ -12,7 +13,7 @@ export default class LoginCommand extends SynapseCommand {
     }
 
     execute(event:SynapseEvent){
-        switch(event.name){
+        switch(event.getClassName()){
             case LoginShowEvent.name:
                 this.loginShow(event);
                 break;
@@ -33,9 +34,14 @@ export default class LoginCommand extends SynapseCommand {
         LoginModel.name = "testChange";
         LoginModel.busy = true;
 
+        var user:UserVo = new UserVo();
+        user.password = ev.password;
+        user.username = ev.username;
+
         setTimeout(() => {
             console.log("busy changed");
 
+            LoginModel.userData = user;
             LoginModel.busy = false;
         }, 3000)
 
