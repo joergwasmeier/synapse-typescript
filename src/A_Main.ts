@@ -10,6 +10,8 @@ class A_Main extends WebApplication {
     constructor() {
         super();
 
+
+
         this.addMediator(new LoginMediator());
 
         var ev:LoginShowEvent = new LoginShowEvent();
@@ -22,6 +24,7 @@ class A_Main extends WebApplication {
        // console.log(ev);
     }
 }
+console.log("dfsfsd");
 
 new A_Main();
 

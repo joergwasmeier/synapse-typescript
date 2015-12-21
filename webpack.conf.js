@@ -3,6 +3,7 @@ var path = require("path");
 
 module.exports = {
   output: {
+    path: path.join(__dirname, "bin"),
     filename: 'bundle.js' // Template based on keys in entry above
   },
   resolve: {
@@ -10,7 +11,7 @@ module.exports = {
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
   },
   entry: [
-    'webpack-dev-server/client?http://localhost:8080/src/', // WebpackDevServer host and port
+    'webpack-dev-server/client?http://localhost:8080/', // WebpackDevServer host and port
     'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
     './src/A_Main.ts' // Your appʼs entry point
   ],

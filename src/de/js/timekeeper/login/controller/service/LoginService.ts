@@ -21,7 +21,7 @@ export default class LoginService extends SynapseSerivce {
             console.log("CCTEST");
             //@endif
 
-            /* @if NODE */
+            /* @ifdef NODE */
             console.log("CCTEST 2");
             /* @endif */
 
