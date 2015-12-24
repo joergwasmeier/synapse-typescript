@@ -38,12 +38,21 @@ export default class LoginCommand extends SynapseCommand {
         user.password = ev.password;
         user.username = ev.username;
 
+        var nRequest:XMLHttpRequest = new XMLHttpRequest();
+        nRequest.addEventListener("load", this.completeHandler, false);
+        nRequest.open("POST", "http://localhost:3000/api/", true);
+        nRequest.setRequestHeader('Content-Type', 'text/plain');
+        nRequest.send("test");
+
         setTimeout(() => {
             console.log("busy changed");
 
             LoginModel.userData = user;
             LoginModel.busy = false;
         }, 3000)
+    }
 
+    private completeHandler(ev) {
+        console.log(ev);
     }
 }

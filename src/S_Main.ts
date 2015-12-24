@@ -7,10 +7,22 @@ class S_Main extends WebApplication {
         super();
 
         this.addMediator(new LoginMediator());
-        console.log("Server Start");
-    }
 
+        var express = require('express');
+        var app = express();
+
+        app.all('/api/', function(req, res, next) {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "X-Requested-With");
+            next();
+        });
+
+        app.post('/api/', function (req, res) {
+            res.send('Api')
+        });
+
+        app.listen(3000);
+    }
 }
 
 new S_Main();
-

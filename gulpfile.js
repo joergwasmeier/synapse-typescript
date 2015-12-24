@@ -6,6 +6,15 @@ var path = require('path');
 var fs = require('fs');
 var nodemon = require('nodemon');
 
+var nodeModules = {};
+fs.readdirSync('node_modules')
+    .filter(function(x) {
+        return ['.bin'].indexOf(x) === -1;
+    })
+    .forEach(function(mod) {
+        nodeModules[mod] = 'commonjs ' + mod;
+    });
+
 // frontend
 var frontendConfig = {
     output: {
@@ -48,10 +57,12 @@ var backendConfig = {
     devtool: '#eval',
     module: {
         loaders: [
+            { test: /\.js$/, exclude: /node_modules/, loaders: ['babel'] },
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader'},
             { test: /\.tsx?$/, loader: 'babel-loader!ts-loader!preprocess?+SERVER', include: path.join(__dirname, 'src')}
         ]
-    }
+    },
+    externals: nodeModules
 };
 
 function onBuild(done) {
