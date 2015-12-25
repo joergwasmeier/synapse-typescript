@@ -40,7 +40,7 @@ export default class Login extends React.Component<{},{}> {
         //@endif
 
         /* @if NODE */
-        console.log("SSTEST 2");
+        console.log("SSTEST 2 sdfdfs");
         /* @endif */
     }
 

@@ -18,7 +18,7 @@ fs.readdirSync('node_modules')
 // frontend
 var frontendConfig = {
     output: {
-        path: path.join(__dirname, "bin"),
+        path: path.join(__dirname),
         filename: 'bundle.js' // Template based on keys in entry above
     },
     resolve: {
@@ -34,7 +34,8 @@ var frontendConfig = {
     module: {
         loaders: [
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader'},
-            { test: /\.tsx?$/, loader: 'react-hot!babel-loader!ts-loader!preprocess?+CLIENT', include: path.join(__dirname, 'src')}
+            { test: /\.ts$/, loader: 'react-hot!babel-loader!ts-loader!preprocess?+CLIENT'},
+            { test: /\.tsx$/, loader: 'react-hot!babel-loader!ts-loader!preprocess?+CLIENT', include: path.join(__dirname, 'src')}
         ]
     },
     plugins: [

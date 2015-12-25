@@ -11,6 +11,7 @@
   "author": "",
   "license": "",
   "dependencies": {
+    "body-parser": "^1.14.2",
     "express": "^4.13.3",
     "less": "*",
     "material-ui": "^0.13.0",
