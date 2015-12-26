@@ -57,6 +57,7 @@
     "typescript": "*",
     "url-loader": "^0.5.6",
     "webpack": "*",
+    "webpack-dev-middleware": "^1.4.0",
     "webpack-dev-server": "*"
   }
 }

@@ -1,18 +1,27 @@
 import WebApplication from "../WebApplication";
 
 export default class SynapseEvent {
-    public callBack:any = function(){};
+
+    identifyer:string;
+
+    public callBack:any = function(){
+        this.cbs(this);
+    };
 
     private cbs:any;
 
     constructor() {
     }
 
-    get name():String{
+    get name():string{
         return this.getClassName();
     }
 
-    getClassName() : String{
+    getClassName() : string{
+        return this.constructor.toString().match(/\w+/g)[1];
+    }
+
+    stGetClassName() : string{
         return this.constructor.toString().match(/\w+/g)[1];
     }
 
@@ -20,7 +29,16 @@ export default class SynapseEvent {
         this.cbs = func;
     }
 
-    dispatch(){
-        WebApplication.dispatchEvent(this);
+
+    dispatch(calb?:any, result?:boolean):void{
+        if (calb){
+            if (!this.callBack){
+                this.callBack = function(){
+                    this.cbs(this);
+                };
+            }
+            this.cbs = calb;
+        }
+        WebApplication.dispatchEvent(this, result);
     }
 }

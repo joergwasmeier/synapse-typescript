@@ -12,8 +12,8 @@ export default class LoginCommand extends SynapseCommand {
         super();
     }
 
-    execute(event:SynapseEvent){
-        switch(event.getClassName()){
+    execute(event:SynapseEvent) {
+        switch (event.getClassName()) {
             case LoginShowEvent.name:
                 this.loginShow(event);
                 break;
@@ -23,32 +23,41 @@ export default class LoginCommand extends SynapseCommand {
         }
     }
 
-    private loginShow(event:LoginShowEvent){
+    serverMsgHandler(event:SynapseEvent){
+        switch (event.getClassName()) {
+
+        }
+    }
+
+    private loginShow(event:LoginShowEvent) {
         var login:Login = new Login();
         login.renderToDom();
-
         event.callBack();
     }
 
-    private loginUserEvent(ev:LoginUserEvent){
-        LoginModel.name = "testChange";
+    private async loginUserEvent(ev:LoginUserEvent) {
+        let result = "";
+
+        // Check data local
+
         LoginModel.busy = true;
+        // Send event to server and recive promise
+       // await this.sendToServer(ev).then((stuff) => {
+       //     result = stuff;
+        //});
+
+        LoginModel.name = result;
+        LoginModel.busy = false;
 
         var user:UserVo = new UserVo();
         user.password = ev.password;
         user.username = ev.username;
 
-        var nRequest:XMLHttpRequest = new XMLHttpRequest();
-
-        nRequest.addEventListener("load", this.completeHandler, false);
-        nRequest.open("POST", "http://localhost:3000/api/", true);
-        //nRequest.setRequestHeader('Content-Type', 'text/plain');
-        nRequest.send(JSON.stringify("dsffsd dsfdsf"));
-
+        ev.callBack();
     }
 
     private completeHandler(ev) {
-        console.log(ev);
+        console.log(ev.target.response);
 
         LoginModel.busy = false;
     }

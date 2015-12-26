@@ -32,16 +32,9 @@ export default class Login extends React.Component<{},{}> {
     }
 
     private onClickHandler(e:MouseEvent):void {
-        new LoginUserEvent(LoginModel.userName, LoginModel.passWord).dispatch();
-
-        //@ifdef NODE
-        console.log("SSTEST");
-
-        //@endif
-
-        /* @if NODE */
-        console.log("SSTEST 2 sdfdfs");
-        /* @endif */
+        new LoginUserEvent(LoginModel.userName, LoginModel.passWord).dispatch((result) => {
+            console.log(result);
+        });
     }
 
     private changeUserNameHandler(e:SyntheticEvent):void{
@@ -69,7 +62,7 @@ export default class Login extends React.Component<{},{}> {
             <div className={`center ${this.className}`}>
                 <Paper className="loginCard">
                     <Paper className="title" zDepth={0}>
-                        <p>{LoginModel.userName}</p>
+                        <p>{LoginModel.name}</p>
                     </Paper>
 
                     <div className="content">
