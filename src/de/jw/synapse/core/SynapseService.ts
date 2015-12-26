@@ -1,10 +1,12 @@
 import SynapseEvent from "./SynapseEvent";
-export default class SynapseSerivce{
-  constructor(){
-    console.log("SynapseSerivce");
-  }
+export default class SynapseSerivce {
+    constructor() {
+        console.log("SynapseSerivce");
+    }
 
-  emitCaller(ev:SynapseEvent){
-    console.log("emitcaller");
-  }
+    sendToClient(ev:SynapseEvent) {
+        console.log("sendToClient");
+        ev.callBack();
+
+    }
 }
