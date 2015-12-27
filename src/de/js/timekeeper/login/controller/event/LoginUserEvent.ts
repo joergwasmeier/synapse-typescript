@@ -4,14 +4,14 @@ import UserVo from "../../model/vo/UserVo";
 export default class LoginUserEvent extends SynapseEvent {
     public static LOGIN:String = "Login";
 
-    username:String;
-    password:String;
+    username:string;
+    password:string;
 
-    loggedIn:Boolean;
+    loggedIn:boolean;
 
     user:UserVo;
 
-    constructor(username?:String, password?:String) {
+    constructor(username?:string, password?:string) {
 
 
         super();

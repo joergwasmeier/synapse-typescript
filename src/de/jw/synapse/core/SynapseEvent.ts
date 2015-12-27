@@ -1,4 +1,5 @@
 import WebApplication from "../WebApplication";
+import SynapseApplication from "./SynapseApplication";
 
 export default class SynapseEvent {
 
@@ -39,6 +40,6 @@ export default class SynapseEvent {
             }
             this.cbs = calb;
         }
-        WebApplication.dispatchEvent(this, result);
+        SynapseApplication.dispatchEvent(this, result);
     }
 }

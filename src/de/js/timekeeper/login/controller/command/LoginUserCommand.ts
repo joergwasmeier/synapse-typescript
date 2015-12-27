@@ -10,13 +10,14 @@ import LoginUserEvent from "../event/LoginUserEvent";
 import LoginModel from "../../model/LoginModel";
 import UserVo from "../../model/vo/UserVo";
 
+
 export default class LoginUserCommand extends SynapseCommand {
 
     execute(event:LoginUserEvent) {
         // Check data local
-        LoginModel.busy = true;
-        event.user.validate();
-        console.log(event.user.validate());
+        //LoginModel.busy = true;
+        //event.user.validate();
+        console.log("sd ssdd");
 
         this.sendToEndpoint(event);
     }

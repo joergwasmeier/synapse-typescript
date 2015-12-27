@@ -45,7 +45,6 @@
         "typings/react/react.d.ts",
         "typings/requirejs/require.d.ts",
         "typings/tsd.d.ts",
-        "src/app.tsx",
         "src/de/js/timekeeper/login/view/Login.tsx"
     ]
 }

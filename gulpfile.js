@@ -6,6 +6,9 @@ var path = require('path');
 var fs = require('fs');
 var nodemon = require('nodemon');
 
+var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+
+
 var nodeModules = {};
 fs.readdirSync('node_modules')
     .filter(function(x) {
@@ -21,24 +24,26 @@ var frontendConfig = {
         path: path.join(__dirname),
         filename: 'bundle.js' // Template based on keys in entry above
     },
+    cache: true,
+    debug: true,
+    devtool: 'eval',
     resolve: {
         // Add `.ts` and `.tsx` as a resolvable extension.
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
     },
     entry: [
         'webpack-dev-server/client?http://localhost:8080/', // WebpackDevServer host and port
-        'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
+        'webpack/hot/dev-server', // "only" prevents reload on syntax errors
         './src/A_Main.ts' // Your appʼs entry point
     ],
-    devtool: '#eval',
     module: {
         loaders: [
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader'},
-            { test: /\.ts$/, loader: 'react-hot!babel-loader!ts-loader!preprocess?+CLIENT'},
-            { test: /\.tsx$/, loader: 'react-hot!babel-loader!ts-loader!preprocess?+CLIENT', include: path.join(__dirname, 'src')}
+            { test: /\.tsx?$/, loader: 'react-hot!babel-loader!ts-loader!preprocess?+CLIENT'}
         ]
     },
     plugins: [
+        new ForkCheckerPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ]
 };
@@ -48,6 +53,9 @@ var backendConfig = {
         filename: 'bin/server.js' // Template based on keys in entry above
     },
     target:'node',
+    cache: true,
+    debug: true,
+    devtool: 'eval',
     resolve: {
         // Add `.ts` and `.tsx` as a resolvable extension.
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
@@ -55,7 +63,6 @@ var backendConfig = {
     entry: [
         './src/S_Main.ts' // Your appʼs entry point
     ],
-    devtool: '#eval',
     module: {
         loaders: [
             { test: /\.js$/, exclude: /node_modules/, loaders: ['babel'] },
@@ -88,8 +95,18 @@ gulp.task('frontend-build', function(done) {
 
 gulp.task('frontend-watch', function() {
     new WebpackDevServer(webpack(frontendConfig), {
+        publicPath: '/',
+
+        // Configure hot replacement
         hot: true,
-        inline: true
+
+        // The rest is terminal configurations
+        quiet: false,
+        noInfo: false,
+        stats: {
+            colors: true
+        }
+
     }).listen(8080, "localhost", function(err) {
         console.log(err);
     });
@@ -109,7 +126,7 @@ gulp.task('backend-watch', function() {
 gulp.task('build', ['frontend-build', 'backend-build']);
 gulp.task('watch', ['backend-watch','frontend-watch']);
 
-gulp.task('run', ['backend-watch', 'frontend-watch'], function() {
+gulp.task('run', ['backend-watch','frontend-watch'], function() {
     nodemon({
         execMap: {
             js: 'node'

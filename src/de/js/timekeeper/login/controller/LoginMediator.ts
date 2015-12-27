@@ -10,7 +10,6 @@ import LoginUserCommand from "./command/LoginUserCommand";
 
 // @ifdef SERVER
 import LoginService from './service/LoginService';
-
 // @endif
 
 export default class LoginMediator extends SynapseMediator {

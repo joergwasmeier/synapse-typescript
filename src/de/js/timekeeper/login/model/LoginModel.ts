@@ -7,10 +7,10 @@ class LoginModel_in extends SynapseModel {
     private static _instance:LoginModel_in = new LoginModel_in();
 
     @Bindable
-    name:String;
+    name:string;
 
     @Bindable
-    busy:Boolean;
+    busy:boolean;
 
     @Bindable
     userName:string;
