@@ -43,7 +43,6 @@
         "typings/react-dom/react-dom.d.ts",
         "typings/react-tap-event-plugin/react-tap-event-plugin.d.ts",
         "typings/react/react.d.ts",
-        "typings/requirejs/require.d.ts",
         "typings/tsd.d.ts",
         "src/de/js/timekeeper/login/view/Login.tsx"
     ]

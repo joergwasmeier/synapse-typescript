@@ -39,7 +39,7 @@ var frontendConfig = {
     module: {
         loaders: [
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader'},
-            { test: /\.tsx?$/, loader: 'react-hot!babel-loader!ts-loader!preprocess?+CLIENT'}
+            { test: /\.tsx?$/, loader: 'react-hot!babel?presets[]=es2015!ts-loader!preprocess?+CLIENT'}
         ]
     },
     plugins: [
@@ -67,7 +67,8 @@ var backendConfig = {
         loaders: [
             { test: /\.js$/, exclude: /node_modules/, loaders: ['babel'] },
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader'},
-            { test: /\.tsx?$/, loader: 'babel-loader!ts-loader!preprocess?+SERVER', include: path.join(__dirname, 'src')}
+            { test: /\.tsx?$/, loader: 'babel?presets[]=es2015!ts-loader!preprocess?+SERVER',
+                include: path.join(__dirname, 'src')}
         ]
     },
     externals: nodeModules

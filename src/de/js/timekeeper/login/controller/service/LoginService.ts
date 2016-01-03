@@ -9,28 +9,22 @@ export default class LoginService extends SynapseSerivce {
     users:UserCollection = new UserCollection();
 
     async execute(event:LoginUserEvent) {
-
-        console.log("sdfdsds");
-
         if (!event.username || !event.password) {
             this.sendToClient(event);
             return;
         }
 
-        var users = await this.users.getUser("Hallo");
-        //var users = <Array<any>> result;
+        var users:Array<UserVo> = await this.users.getUser("Hallo");
         users.map((user)=>{
             console.log(user);
-        })
+        });
+
 
         await this.users.createtUser("Hallo");
 
+        let loginSuccess = this.users.checkLoginData(event.username, event.password);
 
-        console.log("users");
-
-        //let loginSuccess = this.users.checkLoginData(event.username, event.password);
-
-        if (true){
+        if (loginSuccess){
             console.log("true");
             event.loggedIn = true;
         } else {

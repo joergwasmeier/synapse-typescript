@@ -3,6 +3,7 @@ import SynapseMongoCollection from "../../../../jw/synapse/nodejs/SynapseMongoCo
 
 import {Collection, Db, Cursor} from "mongodb";
 import SynapseServer from "../../../../jw/synapse/SynapseServer";
+import UserVo from "../../login/model/vo/UserVo";
 
 export default class UserCollection extends SynapseMongoCollection{
     constructor(){
@@ -10,10 +11,9 @@ export default class UserCollection extends SynapseMongoCollection{
     }
 
     async getUser(userName:string){
-        return new Promise<Array<any>>(resolve => {
-            console.log("start find: " + userName);
+        return new Promise<Array<UserVo>>(resolve => {
             this.find({username:userName}, {}, (err,result:Cursor) => {
-                console.log("end find: " + userName);
+
                 result.toArray((ee,docs)=>{
                     resolve(docs);
                 })

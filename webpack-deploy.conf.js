@@ -15,7 +15,11 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.less$/, loader: 'style-loader!css-loader!less-loader'},
-      { test: /\.tsx?$/, loader: "babel-loader!ts-loader!preprocess?+CLIENT", include: path.join(__dirname, 'src')}
+      {
+        test: /\.tsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'react-hot!babel?presets[]=es2015!ts-loader!preprocess?+CLIENT'
+      }
     ]
   }
 }

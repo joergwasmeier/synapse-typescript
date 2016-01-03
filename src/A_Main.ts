@@ -1,4 +1,3 @@
-
 import WebApplication from "./de/jw/synapse/WebApplication";
 import SynapseEvent from './de/jw/synapse/core/SynapseEvent';
 
@@ -9,7 +8,6 @@ import SynapseApiConnection from "./de/jw/synapse/transport/SynapseApiConnection
 import "babel-polyfill";
 
 import * as injectTapEventPlugin from "react-tap-event-plugin";
-
 
 class A_Main extends WebApplication {
     constructor() {
@@ -27,6 +25,7 @@ class A_Main extends WebApplication {
         console.log("call");
         console.log(ev);
     }
+
 }
 
 new A_Main();
