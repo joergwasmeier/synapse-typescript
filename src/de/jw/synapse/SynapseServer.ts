@@ -40,7 +40,6 @@ export default class SynapseServer extends SynapseApplication{
       let currentEvent = new SynapseApplication.events[body.identifyer]
 
 
-
       var h:any = this.assign(currentEvent, JSON.parse(req.rawBody));
       console.log(h);
       console.log(h.test());

@@ -1,10 +1,8 @@
 import SynapseMongoConnection from "../../../../jw/synapse/nodejs/SynapseMongoConnection";
 import SynapseMongoCollection from "../../../../jw/synapse/nodejs/SynapseMongoCollection";
 
-import {Collection} from "mongodb";
-import {Db} from "mongodb";
+import {Collection, Db, Cursor} from "mongodb";
 import SynapseServer from "../../../../jw/synapse/SynapseServer";
-import {Cursor} from "mongodb";
 
 export default class UserCollection extends SynapseMongoCollection{
     constructor(){

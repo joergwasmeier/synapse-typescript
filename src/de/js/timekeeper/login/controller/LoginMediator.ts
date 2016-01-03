@@ -19,7 +19,6 @@ export default class LoginMediator extends SynapseMediator {
         this.addCommand(LoginShowEvent, LoginCommand);
         this.addCommand(LoginUserEvent, LoginUserCommand);
     }
-
     // @endif
 
 
