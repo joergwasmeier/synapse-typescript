@@ -6,7 +6,3 @@
 /// <reference path="react-tap-event-plugin/react-tap-event-plugin.d.ts" />
 /// <reference path="mongodb/mongodb.d.ts" />
 
-
-
-
-

@@ -1,10 +1,8 @@
 export default class UserVo{
-    username:String;
-    password:String;
+    username:string;
+    password:string;
 
-    constructor(){
-        console.log("UserVo")
-    }
+    constructor(){}
 
     validate():Boolean{
         if (!this.username) return false;

@@ -9,15 +9,13 @@ import SynapseEvent from "../../../../../jw/synapse/core/SynapseEvent";
 import LoginUserEvent from "../event/LoginUserEvent";
 import LoginModel from "../../model/LoginModel";
 import UserVo from "../../model/vo/UserVo";
-
+import {trace} from "../../../../../jw/synapse/utils/Logger";
 
 export default class LoginUserCommand extends SynapseCommand {
-
     execute(event:LoginUserEvent) {
-        // Check data local
-        //LoginModel.busy = true;
-        //event.user.validate();
-        console.log("sd ssdd");
+        trace("test dsdsd");
+
+        LoginModel.busy = false;
 
         this.sendToEndpoint(event);
     }
@@ -26,7 +24,6 @@ export default class LoginUserCommand extends SynapseCommand {
         LoginModel.name = event.username;
         LoginModel.busy = false;
 
-        console.log("result");
-        //console.log(event.user.validate());
+        trace("result");
     }
 }

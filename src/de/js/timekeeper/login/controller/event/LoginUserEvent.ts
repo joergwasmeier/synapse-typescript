@@ -12,8 +12,6 @@ export default class LoginUserEvent extends SynapseEvent {
     user:UserVo;
 
     constructor(username?:string, password?:string) {
-
-
         super();
 
         this.username = username;

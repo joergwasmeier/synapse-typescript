@@ -1,6 +1,7 @@
 import SynapseTransportBase from "./SynapseTransportBase";
 import SynapseEvent from "../core/SynapseEvent";
 import WebApplication from "../WebApplication";
+import {trace} from "../utils/Logger";
 /**
  * Created by creativecode on 25.12.15.
  */
@@ -19,16 +20,14 @@ export default class SynapseApiConnection extends SynapseTransportBase{
         var json = JSON.parse(jsonString);
 
         let currentEvent = new WebApplication.events[json.identifyer];
-        console.log(currentEvent);
+        trace(currentEvent);
         var h:any = assign(currentEvent, json);
 
-        console.log(h);
         h.dispatch(null,true);
     }
 
     public send(event:SynapseEvent, timeoutTime:number = 5000, timeOut:boolean = true, compress:boolean = true){
-        console.log(event);
-        console.log();
+        trace(event);
 
         var nRequest:XMLHttpRequest = new XMLHttpRequest();
 

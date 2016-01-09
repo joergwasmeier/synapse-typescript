@@ -8,15 +8,20 @@ import SynapseServer from "./de/jw/synapse/SynapseServer";
 import SynapseMongoConnection from "./de/jw/synapse/nodejs/SynapseMongoConnection";
 import UserCollection from "./de/js/timekeeper/common/collections/UserCollection";
 
-require('source-map-support').install();
-
 class S_Main extends SynapseServer {
     constructor() {
+        require('source-map-support').install();
+
         super();
 
         this.addMediator(new LoginMediator());
         this.addDatabaseConnection(new SynapseMongoConnection("mongodb://localhost:27017/timekeeper"));
+
+
     }
 }
 
 new S_Main();
+
+
+var foo = "some stuff";

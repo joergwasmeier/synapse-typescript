@@ -5,17 +5,23 @@ import LoginShowEvent from "./event/LoginShowEvent";
 
 // @ifdef CLIENT
 import LoginCommand from "./command/LoginCommand";
-import LoginUserCommand from "./command/LoginUserCommand";
+import LoginUserCommand from"./command/LoginUserCommand";
 // @endif
 
 // @ifdef SERVER
 import LoginService from './service/LoginService';
 // @endif
 
+declare var module:any;
+
 export default class LoginMediator extends SynapseMediator {
 
     // @ifdef CLIENT
     registerCommands() {
+        module.hot.accept("./command/LoginUserCommand", () => {
+            this.updateCommand(LoginUserEvent,  require("./command/LoginUserCommand").default);
+        });
+
         this.addCommand(LoginShowEvent, LoginCommand);
         this.addCommand(LoginUserEvent, LoginUserCommand);
     }
@@ -24,7 +30,11 @@ export default class LoginMediator extends SynapseMediator {
 
     // @ifdef SERVER
     registerServices() {
-        this.addSerivce(LoginUserEvent, LoginService);
+        module.hot.accept("./service/LoginService.ts", () => {
+            this.updateCommand(LoginUserEvent,  require("./service/LoginService.ts").default);
+        });
+
+        this.addCommand(LoginUserEvent, LoginService);
     }
 
     // @endif

@@ -6,16 +6,12 @@ var path = require('path');
 var fs = require('fs');
 var nodemon = require('nodemon');
 
-var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+//var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
 
-var nodeModules = {};
-fs.readdirSync('node_modules')
+var nodeModules = fs.readdirSync('node_modules')
     .filter(function(x) {
         return ['.bin'].indexOf(x) === -1;
-    })
-    .forEach(function(mod) {
-        nodeModules[mod] = 'commonjs ' + mod;
     });
 
 // frontend
@@ -26,7 +22,7 @@ var frontendConfig = {
     },
     cache: true,
     debug: true,
-    devtool: 'eval',
+    devtool: 'source-map',
     resolve: {
         // Add `.ts` and `.tsx` as a resolvable extension.
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
@@ -43,35 +39,51 @@ var frontendConfig = {
         ]
     },
     plugins: [
-        new ForkCheckerPlugin(),
+      //  new ForkCheckerPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ]
 };
 
 var backendConfig = {
-    output: {
-        filename: 'bin/server.js' // Template based on keys in entry above
-    },
+    entry: [
+        //'webpack/hot/signal.js',
+        './src/S_Main.ts' // Your appʼs entry point
+    ],
     target:'node',
-    cache: true,
-    debug: true,
-    devtool: 'eval',
+    output: {
+        path: path.join(__dirname, 'build'),
+        filename: 'backend.js'
+    },
+    node: {
+        __dirname: true,
+        __filename: true
+    },
+    externals: [
+        function(context, request, callback) {
+            var pathStart = request.split('/')[0];
+            if (nodeModules.indexOf(pathStart) >= 0 && request != 'webpack/hot/signal.js') {
+                return callback(null, "commonjs " + request);
+            };
+            callback();
+        }
+    ],
+    devtool: 'source-map',
     resolve: {
         // Add `.ts` and `.tsx` as a resolvable extension.
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
     },
-    entry: [
-        './src/S_Main.ts' // Your appʼs entry point
-    ],
+    recordsPath: path.join(__dirname, 'build/_records'),
+    quiet: true,
     module: {
         loaders: [
             { test: /\.js$/, exclude: /node_modules/, loaders: ['babel'] },
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader'},
-            { test: /\.tsx?$/, loader: 'babel?presets[]=es2015!ts-loader!preprocess?+SERVER',
-                include: path.join(__dirname, 'src')}
+            { test: /\.tsx?$/, loader: 'react-hot!babel?presets[]=es2015!ts-loader!preprocess?+SERVER'}
         ]
     },
-    externals: nodeModules
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ]
 };
 
 function onBuild(done) {
@@ -117,9 +129,15 @@ gulp.task('backend-build', function(done) {
     webpack(backendConfig).run(onBuild(done));
 });
 
-gulp.task('backend-watch', function() {
+gulp.task('backend-watch', function(done) {
+    var firedDone = false;
     webpack(backendConfig).watch(100, function(err, stats) {
-        onBuild()(err, stats);
+        console.log(err);
+        if(!firedDone) {
+            firedDone = true;
+            done();
+        }
+        //console.log(nodemon);
         nodemon.restart();
     });
 });
@@ -132,7 +150,7 @@ gulp.task('run', ['backend-watch','frontend-watch'], function() {
         execMap: {
             js: 'node'
         },
-        script: path.join(__dirname, "bin/server.js"),
+        script: path.join(__dirname, "build/backend.js"),
         ignore: ['*'],
         watch: ['foo/'],
         ext: 'noop'

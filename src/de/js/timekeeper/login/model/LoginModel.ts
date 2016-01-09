@@ -7,7 +7,7 @@ class LoginModel_in extends SynapseModel {
     private static _instance:LoginModel_in = new LoginModel_in();
 
     @Bindable
-    name:string;
+    name:string = "dsdf dff";
 
     @Bindable
     busy:boolean;
@@ -31,6 +31,8 @@ class LoginModel_in extends SynapseModel {
             throw new Error("Error: Instantiation failed: Use LoginModel.getInstance() instead of new.");
         }
         LoginModel_in._instance = this;
+
+
     }
 
     public static getInstance():LoginModel_in {
@@ -38,5 +40,6 @@ class LoginModel_in extends SynapseModel {
     }
 }
 
-const LoginModel = LoginModel_in.getInstance();
+let LoginModel = LoginModel_in.getInstance();
+
 export default LoginModel;

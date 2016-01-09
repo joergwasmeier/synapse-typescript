@@ -3,6 +3,7 @@ import SynapseEvent from "../../../../../jw/synapse/core/SynapseEvent";
 import LoginUserEvent from "../event/LoginUserEvent";
 import UserCollection from "../../../common/collections/UserCollection";
 import UserVo from "../../model/vo/UserVo";
+import {trace} from "../../../../../jw/synapse/utils/Logger";
 
 
 export default class LoginService extends SynapseSerivce {
@@ -15,10 +16,12 @@ export default class LoginService extends SynapseSerivce {
         }
 
         var users:Array<UserVo> = await this.users.getUser("Hallo");
-        users.map((user)=>{
-            console.log(user);
-        });
 
+        if (users){
+            users.map((user)=>{
+                trace(user);
+            });
+        }
 
         await this.users.createtUser("Hallo");
 

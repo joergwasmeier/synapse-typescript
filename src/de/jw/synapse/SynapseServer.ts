@@ -1,6 +1,7 @@
 import SynapseApplication from "./core/SynapseApplication";
 import {Db} from "mongodb";
 import SynapseMongoConnection from "./nodejs/SynapseMongoConnection";
+import {trace} from "./utils/Logger";
 /**
  * Created by creativecode on 27.12.15.
  */
@@ -39,10 +40,7 @@ export default class SynapseServer extends SynapseApplication{
       let body = JSON.parse(req.rawBody);
       let currentEvent = new SynapseApplication.events[body.identifyer]
 
-
       var h:any = this.assign(currentEvent, JSON.parse(req.rawBody));
-      console.log(h);
-      console.log(h.test());
 
       h.dispatch((event) => {
         res.send(JSON.stringify(event));

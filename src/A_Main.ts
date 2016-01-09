@@ -18,14 +18,8 @@ class A_Main extends WebApplication {
         this.addMediator(new LoginMediator());
 
         var ev:LoginShowEvent = new LoginShowEvent();
-        ev.dispatch(this.cjj);
+        ev.dispatch();
     }
-
-    cjj(ev:SynapseEvent){
-        console.log("call");
-        console.log(ev);
-    }
-
 }
 
 new A_Main();

@@ -22,9 +22,11 @@ export default class SynapseApplication{
       var routeItem:Array<any> = this.mediators[a].cmdList;
 
       for(var b:number = 0; b < routeItem.length; b++){
-        if (routeItem[b].event.name === event.name){
-          if (resu) new routeItem[b].cmd().result(event);
-          else new routeItem[b].cmd().execute(event);
+        if (routeItem[b] && routeItem[b].event && routeItem[b].event.name){
+          if (routeItem[b].event.name === event.name){
+            if (resu) new routeItem[b].cmd().result(event);
+            else new routeItem[b].cmd().execute(event);
+          }
         }
       }
     }
