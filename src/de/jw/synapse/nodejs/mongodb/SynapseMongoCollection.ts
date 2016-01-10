@@ -1,4 +1,4 @@
-import SynapseServer from "../SynapseServer";
+import SynapseServer from "../../SynapseServer";
 import {Collection} from "mongodb";
 import {Cursor} from "mongodb";
 import {CollectionFindOptions} from "mongodb";

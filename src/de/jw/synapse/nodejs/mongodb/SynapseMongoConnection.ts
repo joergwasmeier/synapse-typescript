@@ -1,9 +1,9 @@
 import {Db} from "mongodb";
 import {MongoClient} from "mongodb";
 import {Collection} from "mongodb";
-import UserCollection from "../../../js/timekeeper/common/collections/UserCollection";
-import SynapseServer from "../SynapseServer";
-import {trace} from "../utils/Logger";
+import UserCollection from "../../../../js/timekeeper/common/collections/UserCollection";
+import SynapseServer from "../../SynapseServer";
+import {trace} from "../../utils/Logger";
 
 export default class SynapseMongoConnection {
   private dbUrl:string;
@@ -21,8 +21,8 @@ export default class SynapseMongoConnection {
 
   private connectHandler(err:any, conDb:Db) {
     if (err) {
-      trace(err);
-      trace("Could not connect to Database");
+      //trace(err);
+      //trace("Could not connect to Database");
       setTimeout(() => {
         MongoClient.connect(this.dbUrl, null, (err, conDb) => {
           this.connectHandler(err, conDb)

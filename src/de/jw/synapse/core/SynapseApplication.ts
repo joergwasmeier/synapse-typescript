@@ -7,6 +7,7 @@ import SynapseEvent from "./SynapseEvent";
 export default class SynapseApplication{
   static mediators:Array<SynapseMediator> = new Array<SynapseMediator>();
   static events:any = {}
+  static vos:any = {}
 
   public addMediator(cls:SynapseMediator):boolean {
     for (var obj in SynapseApplication.mediators) {

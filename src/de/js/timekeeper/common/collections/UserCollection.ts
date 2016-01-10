@@ -1,5 +1,5 @@
-import SynapseMongoConnection from "../../../../jw/synapse/nodejs/SynapseMongoConnection";
-import SynapseMongoCollection from "../../../../jw/synapse/nodejs/SynapseMongoCollection";
+import SynapseMongoConnection from "../../../../jw/synapse/nodejs/mongodb/SynapseMongoConnection";
+import SynapseMongoCollection from "../../../../jw/synapse/nodejs/mongodb/SynapseMongoCollection";
 
 import {Collection, Db, Cursor} from "mongodb";
 import SynapseServer from "../../../../jw/synapse/SynapseServer";

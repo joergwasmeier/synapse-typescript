@@ -73,7 +73,7 @@ var backendConfig = {
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
     },
     recordsPath: path.join(__dirname, 'build/_records'),
-    quiet: true,
+    quiet: false,
     module: {
         loaders: [
             { test: /\.js$/, exclude: /node_modules/, loaders: ['babel'] },

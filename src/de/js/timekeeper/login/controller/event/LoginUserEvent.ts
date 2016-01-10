@@ -11,6 +11,8 @@ export default class LoginUserEvent extends SynapseEvent {
 
     user:UserVo;
 
+    users:Array<UserVo>;
+
     constructor(username?:string, password?:string) {
         super();
 
@@ -20,6 +22,11 @@ export default class LoginUserEvent extends SynapseEvent {
         this.user = new UserVo();
         this.user.username = username;
         this.user.password = password;
+
+        this.users = new Array();
+        this.users.push(this.user);
+        this.users.push(this.user);
+        this.users.push(this.user);
     }
 
     private test(){

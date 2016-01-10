@@ -17,6 +17,12 @@ export default class LoginUserCommand extends SynapseCommand {
 
         LoginModel.busy = false;
 
+        var hallo:UserVo = new UserVo();
+        hallo.username = "toll";
+        hallo.password = "tollo";
+
+        event.user = hallo;
+
         this.sendToEndpoint(event);
     }
 
