@@ -25,25 +25,10 @@
     ],
     "exclude": [],
     "files": [
-        "src/A_Main.ts",
-        "src/de/js/timekeeper/login/controller/command/LoginCommand.ts",
-        "src/de/js/timekeeper/login/controller/event/LoginShowEvent.ts",
-        "src/de/js/timekeeper/login/controller/event/LoginUserEvent.ts",
-        "src/de/js/timekeeper/login/controller/LoginMediator.ts",
-        "src/de/js/timekeeper/login/controller/service/LoginService.ts",
-        "src/de/js/timekeeper/login/model/LoginModel.ts",
-        "src/de/jw/synapse/core/SynapseCommand.ts",
-        "src/de/jw/synapse/core/SynapseEvent.ts",
-        "src/de/jw/synapse/core/SynapseEventManager.ts",
-        "src/de/jw/synapse/core/SynapseMediator.ts",
-        "src/de/jw/synapse/core/SynapseModel.ts",
-        "src/de/jw/synapse/core/SynapseService.ts",
-        "src/de/jw/synapse/WebApplication.ts",
         "typings/material-ui/material-ui.d.ts",
         "typings/react-dom/react-dom.d.ts",
         "typings/react-tap-event-plugin/react-tap-event-plugin.d.ts",
         "typings/react/react.d.ts",
-        "typings/tsd.d.ts",
-        "src/de/js/timekeeper/login/view/Login.tsx"
+        "typings/tsd.d.ts"
     ]
 }

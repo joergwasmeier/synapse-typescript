@@ -1,11 +1,14 @@
-import SynapseApplication from "./core/SynapseApplication";
-import {Db} from "mongodb";
-import SynapseMongoConnection from "./nodejs/mongodb/SynapseMongoConnection";
-import {trace} from "./utils/Logger";
-import SynapseValueObject from "./core/SynapseValueObject";
 /**
  * Created by creativecode on 27.12.15.
  */
+
+import {trace} from "./utils/Logger";
+import {Db} from "mongodb";
+
+import SynapseApplication from "./core/SynapseApplication";
+import SynapseMongoConnection from "./nodejs/mongodb/SynapseMongoConnection";
+import SynapseValueObject from "./core/SynapseValueObject";
+
 
 export default class SynapseServer extends SynapseApplication{
   static db:SynapseMongoConnection;
