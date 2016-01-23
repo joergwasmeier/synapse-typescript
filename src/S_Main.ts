@@ -15,20 +15,12 @@ class S_Main extends SynapseServer {
         require('source-map-support').install();
 
         trace("Go");
-        //trace(new UserVo);
-
-        //trace(this['UserVo']);
 
         super();
 
         this.addMediator(new LoginMediator());
         this.addDatabaseConnection(new SynapseMongoConnection("mongodb://localhost:27017/timekeeper"));
-
-
     }
 }
 
 new S_Main();
-
-
-var foo = "some stuff";

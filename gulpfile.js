@@ -21,7 +21,7 @@ var frontendConfig = {
         filename: 'bundle.js' // Template based on keys in entry above
     },
     cache: true,
-    debug: true,
+    debug: false,
     devtool: 'source-map',
     resolve: {
         // Add `.ts` and `.tsx` as a resolvable extension.
@@ -34,8 +34,8 @@ var frontendConfig = {
     ],
     module: {
         loaders: [
-            { test: /\.less$/, loader: 'style-loader!css-loader!less-loader'},
-            { test: /\.tsx?$/, loader: 'react-hot!babel?presets[]=es2015!ts-loader!preprocess?+CLIENT'}
+            { test: /\.less$/, loader: 'style-loader!css-loader!less-loader',exclude: /node_modules/},
+            { test: /\.tsx?$/, loader: 'react-hot!babel?cacheDirectory,presets[]=es2015!ts-loader!preprocess?+CLIENT', exclude: /node_modules/}
         ]
     },
     plugins: [
@@ -50,6 +50,7 @@ var backendConfig = {
         './src/S_Main.ts' // Your appʼs entry point
     ],
     target:'node',
+    debug: false,
     output: {
         path: path.join(__dirname, 'build'),
         filename: 'backend.js'
@@ -77,8 +78,8 @@ var backendConfig = {
     module: {
         loaders: [
             { test: /\.js$/, exclude: /node_modules/, loaders: ['babel'] },
-            { test: /\.less$/, loader: 'style-loader!css-loader!less-loader'},
-            { test: /\.tsx?$/, loader: 'react-hot!babel?presets[]=es2015!ts-loader!preprocess?+SERVER'}
+            { test: /\.less$/, loader: 'style-loader!css-loader!less-loader', exclude: /node_modules/},
+            { test: /\.tsx?$/, loader: 'react-hot!babel?presets[]=es2015!ts-loader!preprocess?+SERVER',exclude: /node_modules/}
         ]
     },
     plugins: [
@@ -115,7 +116,7 @@ gulp.task('frontend-watch', function() {
 
         // The rest is terminal configurations
         quiet: false,
-        noInfo: false,
+        noInfo: true,
         stats: {
             colors: true
         }
