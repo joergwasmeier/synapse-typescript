@@ -1,5 +1,5 @@
 <snippet>
-  <content><![CDATA[
+  <content>
 # Synapse-MVC typescript edition
 TODO: Write a project description
 ## Installation
@@ -14,6 +14,5 @@ gulp run
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
-]]></content>
-  <tabTrigger>readme</tabTrigger>
+</content>
 </snippet>
