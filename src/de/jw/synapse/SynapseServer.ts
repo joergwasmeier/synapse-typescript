@@ -13,6 +13,8 @@ import SynapseValueObject from "./core/SynapseValueObject";
 export default class SynapseServer extends SynapseApplication{
   static db:SynapseMongoConnection;
 
+  koa = require('koa');
+
   express = require('express');
   app;
 
@@ -21,7 +23,7 @@ export default class SynapseServer extends SynapseApplication{
   constructor(){
     super();
 
-    this.app = this.express();
+    this.app = this.koa();
     this.startServer();
   }
 
@@ -35,7 +37,6 @@ export default class SynapseServer extends SynapseApplication{
     for (var key in obj) {
       if (obj[key] != null && obj[key].className != null){
         let vo:SynapseValueObject = obj[key];
-        //trace("VO FOUND! : " + vo);
         try {
 
           let neVoInst:any = new SynapseApplication.vos[vo.className];
@@ -45,7 +46,6 @@ export default class SynapseServer extends SynapseApplication{
 
         } catch(e){
           throw e;
-          //trace("VO not Registered");
         }
       }
     }
@@ -54,9 +54,14 @@ export default class SynapseServer extends SynapseApplication{
     return obj;
   }
 
-  private startServer(){
-    this.app.use(this.rawBody);
 
+
+  private startServer(){
+    this.app.use(function *test(){
+      this.body = 'Hello World';
+    });
+
+    /*
     this.app.all('/api/', function(req:any, res:any, next) {
       res.header("Access-Control-Allow-Origin", "*");
       res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -64,31 +69,17 @@ export default class SynapseServer extends SynapseApplication{
     });
 
     this.app.post('/api/', (req, res) => {
-
-    //  var msgpack = require("msgpack-lite");
-//      var buffer = msgpack.decode(req.data);
-
-  //    trace(buffer);
       let body = JSON.parse(req.rawBody);
       let currentEvent = new SynapseApplication.events[body.identifyer];
 
       var h:any = this.assign(currentEvent, JSON.parse(req.rawBody));
       h = this.parseObject(h);
 
-
-
-      //var k:UserVo = this.assign(new UserVo(), h.user);
-      trace(h.user.validate());
-      trace(h.test());
-
-      trace(h);
-
-      trace(h.user.address.fullAdress());
       h.dispatch((event) => {
         res.send(JSON.stringify(event));
       });
     });
-
+    */
     this.app.listen(3000);
   }
 
