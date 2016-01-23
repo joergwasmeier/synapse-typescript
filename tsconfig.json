@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "sourceMap": true,
+        "moduleResolution": "node",
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "outDir": "./build/js/",
+        "rootDir": "./src"
+    },
+    "path": {
+        "projectA": "/src"
+    },
+    "filesGlob": [
+        "**/*.ts",
+        "**/*.tsx",
+        "!node_modules/**"
+    ],
+    "exclude": [],
+    "files": [
+        "typings/material-ui/material-ui.d.ts",
+        "typings/react-dom/react-dom.d.ts",
+        "typings/react-tap-event-plugin/react-tap-event-plugin.d.ts",
+        "typings/react/react.d.ts",
+        "typings/tsd.d.ts"
+    ]
+}
