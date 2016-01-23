@@ -1,13 +1,13 @@
 import SynapseSerivce from "../../../../../jw/synapse/core/SynapseService";
 import SynapseEvent from "../../../../../jw/synapse/core/SynapseEvent";
 import LoginUserEvent from "../event/LoginUserEvent";
-//import UserCollection from "../../../common/collections/UserCollection";
+import UserCollection from "../../../common/collections/UserCollection";
 import UserVo from "../../model/vo/UserVo";
 import {trace} from "../../../../../jw/synapse/utils/Logger";
 
 
 export default class LoginService extends SynapseSerivce {
-    //users:UserCollection = new UserCollection();
+    users:UserCollection = new UserCollection();
 
     async execute(event:LoginUserEvent) {
 
@@ -18,20 +18,20 @@ export default class LoginService extends SynapseSerivce {
             return;
         }
 
-        /*
-        var users:Array<UserVo> = await this.users.getUser("Hallo");
 
-        if (users){
-            users.map((user)=>{
+        let usersRt:Array<UserVo> = await this.users.getUser("Hallo");
+
+        if (usersRt){
+            usersRt.map((user)=>{
                 trace(user);
             });
         }
 
-        await this.users.createtUser("Hallo");
+        await this.users.createtUser("Hallo 2");
 
         let loginSuccess = this.users.checkLoginData(event.username, event.password);
-        */
-        if (true){
+
+        if (loginSuccess){
             console.log("true");
             event.loggedIn = true;
         } else {

@@ -2,8 +2,6 @@ import SynapseApplication from "./core/SynapseApplication";
 import {Db} from "mongodb";
 import SynapseMongoConnection from "./nodejs/mongodb/SynapseMongoConnection";
 import {trace} from "./utils/Logger";
-import UserVo from "../../js/timekeeper/login/model/vo/UserVo";
-import UserVo from "../../js/timekeeper/login/model/vo/UserVo";
 import SynapseValueObject from "./core/SynapseValueObject";
 /**
  * Created by creativecode on 27.12.15.
@@ -37,12 +35,12 @@ export default class SynapseServer extends SynapseApplication{
         //trace("VO FOUND! : " + vo);
         try {
 
-          let neVoInst = new SynapseApplication.vos[vo.className];
+          let neVoInst:any = new SynapseApplication.vos[vo.className];
           obj[key] = this.assign(neVoInst, vo);
 
           obj[key] = this.parseObject(obj[key]);
 
-        } catch(e:Error){
+        } catch(e){
           throw e;
           //trace("VO not Registered");
         }
@@ -56,7 +54,7 @@ export default class SynapseServer extends SynapseApplication{
   private startServer(){
     this.app.use(this.rawBody);
 
-    this.app.all('/api/', function(req, res, next) {
+    this.app.all('/api/', function(req:any, res:any, next) {
       res.header("Access-Control-Allow-Origin", "*");
       res.header("Access-Control-Allow-Headers", "X-Requested-With");
       next();
@@ -64,7 +62,7 @@ export default class SynapseServer extends SynapseApplication{
 
     this.app.post('/api/', (req, res) => {
 
-      var msgpack = require("msgpack-lite");
+    //  var msgpack = require("msgpack-lite");
 //      var buffer = msgpack.decode(req.data);
 
   //    trace(buffer);

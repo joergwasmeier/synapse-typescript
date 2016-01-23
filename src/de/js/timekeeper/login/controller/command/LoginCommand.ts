@@ -6,59 +6,24 @@ import SynapseEvent from "../../../../../jw/synapse/core/SynapseEvent";
 import LoginUserEvent from "../event/LoginUserEvent";
 import LoginModel from "../../model/LoginModel";
 import UserVo from "../../model/vo/UserVo";
+import {ISynapseCommand} from "../../../../../jw/synapse/core/ISynapseCommand";
 
-export default class LoginCommand extends SynapseCommand {
-    constructor() {
-        super();
-    }
-
+export default class LoginCommand extends SynapseCommand implements ISynapseCommand {
     execute(event:SynapseEvent) {
-        switch (event.getClassName()) {
-            case LoginShowEvent.name:
-                this.loginShow(event);
-                break;
-            case LoginUserEvent.name:
-                this.loginUserEvent(<LoginUserEvent> event);
-                break;
-        }
-    }
-
-    serverMsgHandler(event:SynapseEvent){
-        switch (event.getClassName()) {
-
-        }
-    }
-
-    private loginShow(event:LoginShowEvent) {
         var login:Login = new Login();
         login.renderToDom();
         event.callBack();
     }
 
-    private async loginUserEvent(ev:LoginUserEvent) {
-        let result = "";
-
-        // Check data local
-
-        LoginModel.busy = true;
-        // Send event to server and recive promise
-       // await this.sendToServer(ev).then((stuff) => {
-       //     result = stuff;
-        //});
-
-        LoginModel.name = result;
-        LoginModel.busy = false;
-
-        var user:UserVo = new UserVo();
-        user.password = ev.password;
-        user.username = ev.username;
-
-        ev.callBack();
+    result(event:SynapseEvent) {
     }
 
-    private completeHandler(ev) {
-        console.log(ev.target.response);
+    timeout(event:SynapseEvent) {
+    }
 
-        LoginModel.busy = false;
+    error(event:SynapseEvent) {
+    }
+
+    offline(event:SynapseEvent) {
     }
 }

@@ -3,7 +3,7 @@
  */
 
 export default class SynapseValueObject {
-  className:String;
+  className:string;
 
   protected schema = {};
 

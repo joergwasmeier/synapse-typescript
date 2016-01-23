@@ -27,7 +27,7 @@ export default class UserVo extends SynapseValueObject {
 
     validate():Boolean{
         if (!this.username) return false;
-        if (!this.password) return false;
+        else if (!this.password) return false;
         return true;
     }
 

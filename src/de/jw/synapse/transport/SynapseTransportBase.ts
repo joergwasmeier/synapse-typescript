@@ -19,11 +19,7 @@ export default class SynapseTransportBase{
 
         this.runningQuerysNew.push({e:event, q:qId, v:0, clb: event.callBack});
         event.callBack = null;
-
-        var msgpack = require("msgpack-lite");
-        var buffer = msgpack.encode(event);
-        //trace(buffer);
-
+        
         var serilizedData:string = JSON.stringify(event);
         return serilizedData;
     }
