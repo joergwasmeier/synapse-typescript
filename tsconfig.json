@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
         "target": "es6",
+        "module": "commonjs",
         "sourceMap": true,
-        "moduleResolution": "node",
         "jsx": "react",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
@@ -18,11 +18,24 @@
     "path": {
         "projectA": "/src"
     },
+
     "filesGlob": [
         "**/*.ts",
         "**/*.tsx",
         "!node_modules/**"
     ],
+
+    "rootDirs": [
+        "./src/de/"
+    ],
+
+    "paths": {
+        "*": [
+            "*",
+            "src/de/*"
+        ]
+    },
+
     "exclude": [],
     "files": [
         "typings/material-ui/material-ui.d.ts",

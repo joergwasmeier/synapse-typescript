@@ -6,7 +6,7 @@ export default class SynapseEvent {
     identifyer:string;
 
     public callBack:any = function(){
-        this.cbs(this);
+        if (this.cbs) this.cbs(this);
     };
 
     private cbs:any;

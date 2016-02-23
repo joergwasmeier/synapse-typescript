@@ -17,6 +17,7 @@
     "material-ui": "^0.14.0",
     "msgpack-lite": "^0.1.15",
     "msgpack5": "^3.3.0",
+    "preprocess": "^3.0.2",
     "react": "*",
     "react-addons-create-fragment": "*",
     "react-addons-pure-render-mixin": "*",
@@ -68,6 +69,7 @@
     "ts-loader": "*",
     "typescript": "*",
     "url-loader": "^0.5.6",
+    "wallaby-webpack": "0.0.15",
     "webpack": "*",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-dev-server": "*"

@@ -22,7 +22,7 @@ var frontendConfig = {
     },
     cache: true,
     debug: false,
-    devtool: 'source-map',
+    //devtool: 'source-map',
     resolve: {
         // Add `.ts` and `.tsx` as a resolvable extension.
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
@@ -35,12 +35,16 @@ var frontendConfig = {
     module: {
         loaders: [
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader',exclude: /node_modules/},
-            { test: /\.tsx?$/, loader: 'react-hot!babel?cacheDirectory,presets[]=es2015!ts-loader!preprocess?+CLIENT', exclude: /node_modules/}
+            { test: /\.tsx?$/, loader: 'react-hot!babel?presets[]=es2015!ts-loader!preprocess?+CLIENT', exclude: /node_modules/}
         ]
     },
     plugins: [
       //  new ForkCheckerPlugin(),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+
+        new webpack.SourceMapDevToolPlugin(
+            '[file].map', null,
+            "[absolute-resource-path]", "[absolute-resource-path]")
     ]
 };
 

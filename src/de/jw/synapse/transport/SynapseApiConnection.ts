@@ -27,10 +27,10 @@ export default class SynapseApiConnection extends SynapseTransportBase{
     }
 
     public send(event:SynapseEvent, timeoutTime:number = 5000, timeOut:boolean = true, compress:boolean = true){
-        trace(event);
+        //trace(event + "dsfsd");
 
         var nRequest:XMLHttpRequest = new XMLHttpRequest();
-
+        
         nRequest.addEventListener("load", this.completeHandler, false);
         nRequest.open("POST", "http://localhost:3000/api/", true);
         //nRequest.setRequestHeader('Content-Type', 'text/plain');

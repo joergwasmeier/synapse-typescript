@@ -10,8 +10,10 @@ export default class SynapseApplication{
   static vos:any = {}
 
   public addMediator(cls:SynapseMediator):boolean {
-    for (var obj in SynapseApplication.mediators) {
-      if (obj == cls) return false;
+    for (let obj in SynapseApplication.mediators) {
+     // if (obj === cls){
+     //   return false;
+     // }
     }
 
     SynapseApplication.mediators.push(cls);

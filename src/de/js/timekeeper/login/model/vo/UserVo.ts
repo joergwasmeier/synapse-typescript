@@ -1,4 +1,4 @@
-import {trace} from "../../../../../jw/synapse/utils/Logger";
+//import {trace} from "../../../../../jw/synapse/utils/Logger";
 import SynapseValueObject from "../../../../../jw/synapse/core/SynapseValueObject";
 import SynapseApplication from "../../../../../jw/synapse/core/SynapseApplication";
 import Address from "./Address";
@@ -59,7 +59,7 @@ function MyClassDecorator(target: any) {
     // the new constructor behaviour
     var f : any = function (...args) {
         console.log("New: " + original.name);
-        trace(original);
+       // trace(original);
 
 
         return construct(original, args);

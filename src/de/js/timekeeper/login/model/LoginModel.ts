@@ -2,9 +2,8 @@ import SynapseModel from "../../../../jw/synapse/core/SynapseModel";
 import Bindable from "../../../../jw/synapse/decorators/Bindable";
 import UserVo from "./vo/UserVo";
 
-class LoginModel_in extends SynapseModel {
-
-    private static _instance:LoginModel_in = new LoginModel_in();
+export default class LoginModel extends SynapseModel {
+    private static _instance:LoginModel = new LoginModel();
 
     @Bindable
     name:string = "dsdf dff";
@@ -27,19 +26,14 @@ class LoginModel_in extends SynapseModel {
     constructor() {
         super();
 
-        if (LoginModel_in._instance) {
-            throw new Error("Error: Instantiation failed: Use LoginModel.getInstance() instead of new.");
+        if (LoginModel._instance) {
+            throw new Error("Error: Instantiation failed: Use LoginModel.getInstance().getInstance() instead of new.");
         }
-        LoginModel_in._instance = this;
 
-
+        LoginModel._instance = this;
     }
 
-    public static getInstance():LoginModel_in {
-        return LoginModel_in._instance;
+    public static getInstance():LoginModel {
+        return LoginModel._instance;
     }
 }
-
-let LoginModel = LoginModel_in.getInstance();
-
-export default LoginModel;

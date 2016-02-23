@@ -13,9 +13,9 @@ import {trace} from "../../../../../jw/synapse/utils/Logger";
 
 export default class LoginUserCommand extends SynapseCommand {
     execute(event:LoginUserEvent) {
-        trace("test dsdsd");
+        //trace("test dsdsd");
 
-        LoginModel.busy = false;
+        LoginModel.getInstance().busy = false;
 
         var hallo:UserVo = new UserVo();
         hallo.username = "toll";
@@ -27,8 +27,8 @@ export default class LoginUserCommand extends SynapseCommand {
     }
 
     result(event:LoginUserEvent){
-        LoginModel.name = event.username;
-        LoginModel.busy = false;
+        LoginModel.getInstance().name = event.username;
+        LoginModel.getInstance().busy = false;
 
         trace("result");
     }

@@ -20,37 +20,40 @@ export default class Login extends React.Component<{},{}> {
     }
 
     state:{
-        busy?:boolean
+        busy?:boolean,
     }
 
     componentWillMount():void {
-        LoginModel.addChangeListener( () => this.forceUpdate());
+
+        LoginModel.getInstance().addChangeListener( () => this.forceUpdate());
 
         this.onClickHandler(null);
     }
 
     componentWillUnmount():void {
-        LoginModel.removeChangeListener( () => this.forceUpdate());
+        LoginModel.getInstance().removeChangeListener( () => this.forceUpdate());
     }
 
     private onClickHandler(e:MouseEvent):void {
-        new LoginUserEvent(LoginModel.userName, LoginModel.passWord).dispatch((result) => {
+        LoginModel.getInstance().userName = "Super";
+
+        new LoginUserEvent(LoginModel.getInstance().userName, LoginModel.getInstance().passWord).dispatch((result) => {
             console.log(result);
         });
     }
 
     private changeUserNameHandler(e:SyntheticEvent):void{
         var input:HTMLInputElement = e.target as HTMLInputElement
-        LoginModel.userName = input.value;
+        LoginModel.getInstance().userName = input.value;
     }
 
     private changePassWordHandler(e:SyntheticEvent):void {
         var input:HTMLInputElement = e.target as HTMLInputElement
-        LoginModel.passWord = input.value;
+        LoginModel.getInstance().passWord = input.value;
     }
 
     private renderProgress():JSX.Element {
-        if (LoginModel.busy) {
+        if (LoginModel.getInstance().busy) {
             return (
                 <div className="busy">
                     <CircularProgress mode="indeterminate"/>
@@ -64,27 +67,27 @@ export default class Login extends React.Component<{},{}> {
             <div className={`center ${this.className}`}>
                 <Paper className="loginCard">
                     <Paper className="title" zDepth={0}>
-                        <p>{LoginModel.name}</p>
+                        <p>{LoginModel.getInstance().name}</p>
                     </Paper>
 
                     <div className="content">
 
                         <TextField className="textField"
                                    floatingLabelText="Username"
-                                   value={LoginModel.userName}
+                                   value={LoginModel.getInstance().userName}
                                    onChange={e => this.changeUserNameHandler(e)}/>
 
                         <TextField className="textField"
                                    floatingLabelText="Password"
                                    type="password"
-                                   value={LoginModel.passWord}
+                                   value={LoginModel.getInstance().passWord}
                                    onChange={e => this.changePassWordHandler(e)}/>
 
                         <Toggle className="autoLogin"
-                                value={LoginModel.autoLogin}
+                                value={LoginModel.getInstance().autoLogin}
                                 label="Auto login?!" />
 
-                        <FlatButton label="LOGIN" className="loginBt"
+                        <FlatButton label={this.className} className="loginBt"
                                     onClick={e => this.onClickHandler(e)} />
                     </div>
 
@@ -96,7 +99,7 @@ export default class Login extends React.Component<{},{}> {
         )
     }
 
-    public renderToDom(name:string = "container"):void {
-        ReactDOM.render(<Login/>, document.getElementById(name));
+    public renderToDom(name:any):void {
+        ReactDOM.render(<Login/>, name);
     }
 }

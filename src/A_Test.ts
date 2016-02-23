@@ -7,7 +7,7 @@ import SynapseApiConnection from "./de/jw/synapse/transport/SynapseApiConnection
 import "babel-polyfill";
 import * as injectTapEventPlugin from "react-tap-event-plugin";
 
-export default class A_Main extends WebApplication {
+export default class A_Test extends WebApplication {
 
     public sup:string = "test";
 
@@ -19,12 +19,5 @@ export default class A_Main extends WebApplication {
         WebApplication.addServerEndPoint(new SynapseApiConnection( "http://localhost:3000/"), "api");
 
         this.addMediator(new LoginMediator());
-
-        var ev:LoginShowEvent = new LoginShowEvent(document.getElementById("container"));
-        ev.dispatch();
-
     }
 }
-
-new A_Main();
-
