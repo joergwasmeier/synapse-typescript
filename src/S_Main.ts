@@ -10,11 +10,9 @@ import UserCollection from "./de/js/timekeeper/common/collections/UserCollection
 import {trace} from "./de/jw/synapse/utils/Logger";
 import UserVo from "./de/js/timekeeper/login/model/vo/UserVo";
 
-class S_Main extends SynapseServer {
+export default class S_Main extends SynapseServer {
     constructor() {
         require('source-map-support').install();
-
-        trace("Go");
 
         super();
 

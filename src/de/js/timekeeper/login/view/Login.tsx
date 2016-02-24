@@ -24,10 +24,7 @@ export default class Login extends React.Component<{},{}> {
     }
 
     componentWillMount():void {
-
         LoginModel.getInstance().addChangeListener( () => this.forceUpdate());
-
-        this.onClickHandler(null);
     }
 
     componentWillUnmount():void {
