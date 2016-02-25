@@ -36,8 +36,11 @@ export default class UserCollection extends SynapseMongoCollection{
         });
     }
 
-    async checkLoginData(userName:string, password:string){
-
+    async checkLoginData(userName:string, password:string):Promise<boolean>{
+        return new Promise<Array<UserVo>>(resolve => {
+            if (userName == "test" && password == "test") resolve(true)
+            else resolve(false)
+        });
     }
 
 }

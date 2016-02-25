@@ -31,7 +31,7 @@ export default class SynapseApiConnection extends SynapseTransportBase{
 
         var nRequest:XMLHttpRequest = new XMLHttpRequest();
         
-        nRequest.addEventListener("load", this.completeHandler, false);
+      //  nRequest.addEventListener("load", this.completeHandler, false);
         nRequest.open("POST", "http://localhost:3000/api/", true);
         //nRequest.setRequestHeader('Content-Type', 'text/plain');
         nRequest.send(super.prepareEventToSend(event));

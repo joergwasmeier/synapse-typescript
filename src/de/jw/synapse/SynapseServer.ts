@@ -80,7 +80,7 @@ export default class SynapseServer extends SynapseApplication{
       });
     });
     */
-    this.app.listen(3001);
+   // this.app.listen(4001);
   }
 
   private rawBody(req, res, next) {

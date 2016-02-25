@@ -11,6 +11,7 @@ export default class SynapseMongoCollection{
   protected collection:Collection;
 
   constructor(collectionName:string){
+    console.log(SynapseServer.db.dataBase);
     this.collection = SynapseServer.db.dataBase.collection(collectionName);
   }
 

@@ -52,6 +52,10 @@ module.exports = function (wallaby) {
 
         env: {
             type: 'node'
+        },
+
+        workers: {
+            recycle: true
         }
     }
 };

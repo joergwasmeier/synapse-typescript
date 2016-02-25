@@ -29,7 +29,9 @@ export default class LoginService extends SynapseSerivce {
 
         await this.users.createtUser("Hallo 2");
 
-        let loginSuccess = this.users.checkLoginData(event.username, event.password);
+        let loginSuccess = await this.users.checkLoginData(event.username, event.password);
+
+        console.log(loginSuccess);
 
         if (loginSuccess){
             console.log("true");
