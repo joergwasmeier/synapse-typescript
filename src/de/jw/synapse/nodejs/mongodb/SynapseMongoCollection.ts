@@ -11,8 +11,11 @@ export default class SynapseMongoCollection{
   protected collection:Collection;
 
   constructor(collectionName:string){
-    console.log(SynapseServer.db.dataBase);
-    this.collection = SynapseServer.db.dataBase.collection(collectionName);
+    try {
+      this.collection = SynapseServer.db.dataBase.collection(collectionName);
+    } catch(e){
+      console.log("DB Is not Ready");
+    }
   }
 
   find(selector: Object, options?: CollectionFindOptions, callback?: (err: Error, result: Cursor) => void): Cursor{

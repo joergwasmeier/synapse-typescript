@@ -23,7 +23,7 @@ export default class LoginService extends SynapseSerivce {
 
         if (usersRt){
             usersRt.map((user)=>{
-                trace(user);
+                //trace(user);
             });
         }
 
@@ -31,13 +31,13 @@ export default class LoginService extends SynapseSerivce {
 
         let loginSuccess = await this.users.checkLoginData(event.username, event.password);
 
-        console.log(loginSuccess);
+       // console.log(loginSuccess);
 
         if (loginSuccess){
-            console.log("true");
+          //  console.log("true");
             event.loggedIn = true;
         } else {
-            console.log("false");
+           // console.log("false");
             event.loggedIn = false;
         }
 

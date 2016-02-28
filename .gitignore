@@ -1,5 +1,6 @@
 /bin
 /build
+/tmp
 /node_modules
 .idea
 .npm

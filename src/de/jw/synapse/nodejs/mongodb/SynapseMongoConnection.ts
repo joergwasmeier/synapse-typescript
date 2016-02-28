@@ -13,10 +13,10 @@ export default class SynapseMongoConnection {
     this.dbUrl = dbUrl;
   }
 
-  public connect():void {
-    MongoClient.connect(this.dbUrl, (err, conDb) => {
-      this.connectHandler(err, conDb)
-    });
+   connect():void {
+     MongoClient.connect(this.dbUrl, (err, conDb) => {
+       this.connectHandler(err,conDb);
+     });
   }
 
   private connectHandler(err:any, conDb:Db) {
@@ -33,6 +33,6 @@ export default class SynapseMongoConnection {
 
     this.dataBase = conDb;
 
-    trace("Connect to Database");
+    console.log("Connect to Database");
   }
 }

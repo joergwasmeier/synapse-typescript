@@ -30,7 +30,6 @@ export default class SynapseServer extends SynapseApplication{
   addDatabaseConnection(db:SynapseMongoConnection){
     SynapseServer.db = db;
     SynapseServer.db.connect();
-
   }
 
   parseObject(obj){

@@ -23,23 +23,23 @@ export default class UserCollection extends SynapseMongoCollection{
     }
 
     async createtUser(userName:string){
-        console.log("createtUser");
+        //console.log("createtUser");
 
-        console.log(this.insert);
+       // console.log(this.insert);
 
         var user:UserVo = new UserVo();
         user.username = userName;
 
         this.insert(user, {serializeFunctions:true}, (err,result) => {
-            console.log(err);
-            console.log(result);
+            //console.log(err);
+            //console.log(result);
         });
     }
 
     async checkLoginData(userName:string, password:string):Promise<boolean>{
-        return new Promise<Array<UserVo>>(resolve => {
-            if (userName == "test" && password == "test") resolve(true)
-            else resolve(false)
+        return new Promise<boolean>(resolve => {
+            if (userName == "test" && password == "test") resolve(true);
+            else resolve(false);
         });
     }
 

@@ -16,7 +16,6 @@ export default class LoginCommand extends SynapseCommand implements ISynapseComm
 
         login.renderToDom(event.target);
         event.callBack();
-
     }
 
     result(event:SynapseEvent) {

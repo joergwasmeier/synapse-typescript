@@ -13,7 +13,7 @@
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
         "outDir": "./build/js/",
-        "rootDir": "./src",
+        "rootDir": "./",
         "moduleResolution": "node"
     },
     "path": {
@@ -27,17 +27,15 @@
     ],
 
     "rootDirs": [
-        "./src/de/"
+        "./src/"
     ],
 
     "paths": {
         "*": [
             "*",
-            "src/de/*"
-        ]
+            "src/de/*"]
     },
-
-    "exclude": [],
+    "exclude": ["test"],
     "files": [
         "typings/material-ui/material-ui.d.ts",
         "typings/react-dom/react-dom.d.ts",

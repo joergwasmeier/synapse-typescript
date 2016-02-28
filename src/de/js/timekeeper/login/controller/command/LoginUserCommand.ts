@@ -13,8 +13,6 @@ import {trace} from "../../../../../jw/synapse/utils/Logger";
 
 export default class LoginUserCommand extends SynapseCommand {
     execute(event:LoginUserEvent) {
-        //trace("test dsdsd");
-
         LoginModel.getInstance().busy = false;
 
         var hallo:UserVo = new UserVo();

@@ -15,17 +15,8 @@ import LoginService from './service/LoginService';
 declare var module:any;
 
 export default class LoginMediator extends SynapseMediator {
-
-    test(){
-        console.log("dsdfdsfdsf ");
-    }
-
     // @ifdef CLIENT
     registerCommands() {
-       // module.hot.accept("./command/LoginUserCommand", () => {
-       //     this.updateCommand(LoginUserEvent,  require("./command/LoginUserCommand").default);
-      //  });
-
         this.addCommand(LoginShowEvent, LoginCommand);
         this.addCommand(LoginUserEvent, LoginUserCommand);
     }

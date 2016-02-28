@@ -106,15 +106,15 @@ declare namespace __React {
     
             export function isElementOfType(
                 element: ReactElement<any>, type: ReactType): boolean;
-            export function isDOMComponent(instance: ReactInstance): boolean;
-            export function isCompositeComponent(instance: ReactInstance): boolean;
+            export function isDOMComponent(instance: any): boolean;
+            export function isCompositeComponent(instance: any): boolean;
             export function isCompositeComponentWithType(
-                instance: ReactInstance,
+                instance: any,
                 type: ComponentClass<any>): boolean;
     
             export function findAllInRenderedTree(
                 root: Component<any, any>,
-                fn: (i: ReactInstance) => boolean): ReactInstance[];
+                fn: (i: any) => boolean): any[];
     
             export function scryRenderedDOMComponentsWithClass(
                 root: Component<any, any>,

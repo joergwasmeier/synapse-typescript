@@ -4,7 +4,6 @@ var pp = require('preprocess');
 var webpack = require('webpack');
 
 var wallabyPostprocessor = wallabyWebpack({
-
     plugins: [
         new webpack.NormalModuleReplacementPlugin(/\.(gif|png|less|css)$/, 'node-noop')
     ]
@@ -47,6 +46,8 @@ module.exports = function (wallaby) {
             runner: require('phantomjs2-ext').path,
             params: { runner: '--web-security=false' }
         },
+
+        testFramework: 'jasmine',
 
         setup: function () {
             window.__moduleBundler.loadTests();

@@ -11,14 +11,22 @@ import {trace} from "./de/jw/synapse/utils/Logger";
 import UserVo from "./de/js/timekeeper/login/model/vo/UserVo";
 
 export default class S_Main extends SynapseServer {
-    constructor() {
+   async constructor() {
         require('source-map-support').install();
 
         super();
 
-        this.addMediator(new LoginMediator());
+        // DB Connection
+
+        // Que all Events
+
+        // Start Server
+
+        // Progress Events
+
         this.addDatabaseConnection(new SynapseMongoConnection("mongodb://localhost:27017/timekeeper"));
+        this.addMediator(new LoginMediator());
     }
 }
 
-new S_Main();
+//new S_Main();

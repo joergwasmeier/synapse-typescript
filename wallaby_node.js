@@ -3,7 +3,7 @@ var pp = require('preprocess');
 
 var wallabyPostprocessor = wallabyWebpack({
     entryPatterns: [
-        "test/mainSpec.js*"
+        "test/node/mainSpec.js*"
     ],
 
     module: {
@@ -28,7 +28,7 @@ module.exports = function (wallaby) {
         ],
 
         tests: [
-            {pattern: 'test/*Spec_Node.ts'}
+            {pattern: 'test/node/mainSpec.ts'}
         ],
 
         preprocessors: {
@@ -44,7 +44,7 @@ module.exports = function (wallaby) {
             },
         },
 
-        postprocessor: wallabyPostprocessor,
+        //postprocessor: wallabyPostprocessor,
 
         compilers: {
             '**/*.ts*': wallaby.compilers.typeScript()
@@ -53,6 +53,8 @@ module.exports = function (wallaby) {
         env: {
             type: 'node'
         },
+
+        testFramework: 'jasmine',
 
         workers: {
             recycle: true

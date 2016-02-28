@@ -1,6 +1,6 @@
 // @ifdef SERVER
 export function trace(msg:String):void{}
-trace = require('tracer').colorConsole().log;
+//trace = require('tracer').colorConsole().log;
 // @endif
 
 // @ifdef CLIENT

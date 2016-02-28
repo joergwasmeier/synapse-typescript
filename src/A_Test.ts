@@ -16,5 +16,6 @@ export default class A_Test extends WebApplication {
         super();
         WebApplication.addServerEndPoint(new SynapseApiConnection( "http://localhost:3000/"), "api");
         this.addMediator(new LoginMediator());
+
     }
 }

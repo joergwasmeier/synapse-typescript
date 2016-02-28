@@ -163,3 +163,39 @@ gulp.task('run', ['backend-watch','frontend-watch'], function() {
         console.log('Restarted!');
     });
 });
+
+var jasmine = require('gulp-jasmine');
+var runSequence = require('run-sequence');
+var watch = require('gulp-watch');
+
+gulp.task('testComp', function(done) {
+    webpack(require('./webpack.config.js'), function(e, r){
+        done();
+    });
+});
+
+
+gulp.task('testJasmine', function() {
+    return gulp.src('./tmp/node_test_bundle.js')
+        .pipe(jasmine());
+});
+
+gulp.task('testNode', function() {
+    watch('**/*.ts', function(files) {
+        runSequence( 'testComp', 'testJasmine' );
+    });
+
+    runSequence( 'testComp', 'testJasmine' );
+});
+
+var Server = require('karma').Server;
+
+gulp.task('testKarma', function(done) {
+    new Server({
+        configFile: __dirname + '/karma.conf.js',
+    }, done).start();
+});
+
+
+gulp.task('complete', ['backend-watch','frontend-watch', 'testNode', 'testKarma']);
+gulp.task('tdd', ['testNode', 'testKarma']);
