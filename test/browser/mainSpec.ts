@@ -1,21 +1,21 @@
 import * as TestUtils from 'react-addons-test-utils';
 
-import LoginShowEvent from "../../src/de/js/timekeeper/login/controller/event/LoginShowEvent";
+import LoginShowEvent from "../../src/timekeeper/login/controller/event/LoginShowEvent";
 import A_Test from "../../src/A_Test";
-import LoginModel from "../../src/de/js/timekeeper/login/model/LoginModel";
+import LoginModel from "../../src/timekeeper/login/model/LoginModel";
 
 
 describe("Basic Test", function() {
-    it("dsfdfsdf", ()=>{
-        expect("Super").toBe("Super");
-    });
-
-    beforeEach(() => {
+    beforeEach((done) => {
         this.container = document.createElement('div');
         document.body.appendChild(this.container);
 
         new A_Test();
-        new LoginShowEvent(this.container).dispatch();
+        setTimeout(() => {
+            new LoginShowEvent(this.container).dispatch();
+            done();
+        }, 200);
+
     });
 
     it("Click Login Button", (done) => {

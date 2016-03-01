@@ -1,5 +1,5 @@
 import S_Main from "../../src/S_Main";
-import LoginUserEvent from "../../src/de/js/timekeeper/login/controller/event/LoginUserEvent";
+import LoginUserEvent from "../../src/timekeeper/login/controller/event/LoginUserEvent";
 
 describe("Basic Test", function() {
     beforeEach(() => {

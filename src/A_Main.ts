@@ -1,30 +1,13 @@
-import WebApplication from "./de/jw/synapse/WebApplication";
+import LoginMediator from "./timekeeper/login/controller/LoginMediator";
+import FabaWebApplication from "fabalous/FabaWebApplication";
+import FabaApiConnection from "fabalous/transport/FabaApiConnection";
 
-import LoginMediator from "./de/js/timekeeper/login/controller/LoginMediator";
-import LoginShowEvent from "./de/js/timekeeper/login/controller/event/LoginShowEvent";
-import SynapseApiConnection from "./de/jw/synapse/transport/SynapseApiConnection";
-
-import "babel-polyfill";
-import * as injectTapEventPlugin from "react-tap-event-plugin";
-
-export default class A_Main extends WebApplication {
-
-    public sup:string = "test";
-
-    constructor(test:boolean = true) {
-
+class A_Main extends FabaWebApplication {
+    constructor(){
         super();
-        this.sup = "tester";
 
-        WebApplication.addServerEndPoint(new SynapseApiConnection( "http://localhost:3000/"), "api");
-
-        this.addMediator(new LoginMediator());
-
-        var ev:LoginShowEvent = new LoginShowEvent(document.getElementById("container"));
-        ev.dispatch();
-
+        FabaWebApplication.addServerEndPoint(new FabaApiConnection( "http://localhost:3000/"), "api");
     }
 }
 
 new A_Main();
-

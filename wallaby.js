@@ -4,6 +4,15 @@ var pp = require('preprocess');
 var webpack = require('webpack');
 
 var wallabyPostprocessor = wallabyWebpack({
+    entry: [
+        './test/browser/mainSpec.ts' // Your appʼs entry point
+    ],
+    module: {
+        loaders: [
+            { test: /\.js$/, loaders: ['babel?presets[]=es2015'] },
+            { test: /\.tsx?$/, loader: 'babel?presets[]=es2015!ts-loader!preprocess?+CLIENT'}
+        ]
+    },
     plugins: [
         new webpack.NormalModuleReplacementPlugin(/\.(gif|png|less|css)$/, 'node-noop')
     ]
@@ -20,27 +29,28 @@ module.exports = function (wallaby) {
         ],
 
         tests: [
-            {pattern: 'test/*Spec.ts'}
+            {pattern: 'test/browser/*Spec.ts'}
         ],
 
         preprocessors: {
             '**/*.js': function(file) {
+                console.log(file.name);
                 return require("babel-core").transform(file.content, {
                     sourceMap: true,
                     presets: ["es2015", "react"],
                     compact: false
                 });
             },
-            'src/**/*.ts': function(file) {
+            '**/*.ts': function(file) {
                 return pp.preprocess(file.content, {CLIENT:true}, {type: 'ts'});
-            },
+            }
         },
-
+        debug:true,
         postprocessor: wallabyPostprocessor,
 
-        compilers: {
-            '**/*.ts*': wallaby.compilers.typeScript()
-        },
+        // compilers: {
+        //     '**/*.ts*': wallaby.compilers.typeScript()
+        //  },
 
         env: {
             runner: require('phantomjs2-ext').path,

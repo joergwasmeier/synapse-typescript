@@ -17,35 +17,26 @@ var nodeModules = fs.readdirSync('node_modules')
 // frontend
 var frontendConfig = {
     output: {
-        path: path.join(__dirname),
+        path: path.join(__dirname, 'build'),
         filename: 'bundle.js' // Template based on keys in entry above
     },
-    cache: true,
-    debug: false,
-    //devtool: 'source-map',
+    cache: false,
+    debug: true,
+    devtool: 'source-map',
     resolve: {
         // Add `.ts` and `.tsx` as a resolvable extension.
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
     },
     entry: [
-        'webpack-dev-server/client?http://localhost:8080/', // WebpackDevServer host and port
-        'webpack/hot/dev-server', // "only" prevents reload on syntax errors
         './src/A_Main.ts' // Your appʼs entry point
     ],
     module: {
         loaders: [
+            { test: /\.js$/, exclude: /node_modules/, loaders: ['babel!preprocess?+CLIENT'] },
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader',exclude: /node_modules/},
-            { test: /\.tsx?$/, loader: 'react-hot!babel?presets[]=es2015!ts-loader!preprocess?+CLIENT', exclude: /node_modules/}
+            { test: /\.tsx?$/, loader: 'babel?presets[]=es2015!ts-loader!preprocess?+CLIENT'}
         ]
-    },
-    plugins: [
-      //  new ForkCheckerPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-
-        new webpack.SourceMapDevToolPlugin(
-            '[file].map', null,
-            "[absolute-resource-path]", "[absolute-resource-path]")
-    ]
+    }
 };
 
 var backendConfig = {
@@ -83,12 +74,9 @@ var backendConfig = {
         loaders: [
             { test: /\.js$/, exclude: /node_modules/, loaders: ['babel'] },
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader', exclude: /node_modules/},
-            { test: /\.tsx?$/, loader: 'react-hot!babel?presets[]=es2015!ts-loader!preprocess?+SERVER',exclude: /node_modules/}
+            { test: /\.tsx?$/, loader: 'babel?presets[]=es2015!ts-loader!preprocess?+SERVER',exclude: /node_modules/}
         ]
-    },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin()
-    ]
+    }
 };
 
 function onBuild(done) {
@@ -107,7 +95,20 @@ function onBuild(done) {
 }
 
 gulp.task('frontend-build', function(done) {
-    webpack(frontendConfig).run(onBuild(done));
+    var myConfig = frontendConfig;
+/*
+    myConfig.plugins = [
+        new webpack.DefinePlugin({
+            "process.env": {
+                // This has effect on the react lib size
+                "NODE_ENV": JSON.stringify("production")
+            }
+        }),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.UglifyJsPlugin()
+    ];
+*/
+    webpack(myConfig).run(onBuild(done));
 });
 
 
@@ -120,7 +121,7 @@ gulp.task('frontend-watch', function() {
 
         // The rest is terminal configurations
         quiet: false,
-        noInfo: true,
+        noInfo: false,
         stats: {
             colors: true
         }
