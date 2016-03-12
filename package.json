@@ -3,8 +3,21 @@
   "version": "0.0.3",
   "description": "",
   "scripts": {
-    "test": "karma start",
-    "start": "gulp run"
+    "deploy": "gulp --cwd config/gulp/ deploy-all",
+    "deploy-frontend": "gulp --cwd config/gulp/ deploy-frontend",
+    "deploy-backend": "gulp --cwd config/gulp/ deploy-backend",
+
+    "test": "gulp --cwd config/gulp/test-all",
+    "test-frontend": "gulp --cwd config/gulp/test-all",
+    "test-backend": "gulp --cwd config/gulp/test-all",
+
+    "wallaby-frontend": "gulp --cwd config/gulp/ wallaby-frontend",
+    "wallaby-backend": "gulp --cwd config/gulp/ wallaby-frontend",
+
+    "start": "gulp --cwd config/gulp/ develop-all",
+    "start-frontend": "gulp --cwd config/gulp/ develop-frontend",
+    "start-backend": "gulp --cwd config/gulp/ develop-backend"
+
   },
   "author": "",
   "license": "",

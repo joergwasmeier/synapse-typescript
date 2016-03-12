@@ -5,7 +5,6 @@ import LoginShowEvent from "./event/LoginShowEvent";
 
 export default class LoginMediator extends FabaMediator {
     constructor(){
-        console.log("start");
         super();
     }
 
@@ -17,11 +16,11 @@ export default class LoginMediator extends FabaMediator {
     // @endif
 
 
-
+    // @ifdef SERVER
     registerServices() {
-        // this.addCommand(LoginUserEvent, LoginService);
+        this.addCommand(LoginUserEvent, LoginService);
     }
-
+    // @endif
 }
 
 // @ifdef CLIENT
@@ -30,5 +29,5 @@ import LoginUserCommand from"./command/LoginUserCommand";
 // @endif
 
 // @ifdef SERVER
-//import LoginService from './service/LoginService';
+import LoginService from './service/LoginService';
 // @endif

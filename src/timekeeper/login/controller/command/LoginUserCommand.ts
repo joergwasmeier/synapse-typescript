@@ -2,7 +2,6 @@
  * Created by creativecode on 25.12.15.
  */
 import LoginShowEvent from "../event/LoginShowEvent";
-import Login from  "../../view/Login";
 import LoginUserEvent from "../event/LoginUserEvent";
 import LoginModel from "../../model/LoginModel";
 import UserVo from "../../model/vo/UserVo";

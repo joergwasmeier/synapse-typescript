@@ -16,11 +16,11 @@ module.exports = function (wallaby) {
 
     return {
         files: [
-            {pattern: 'src/**/*.ts*'}
+            {pattern: '/../../src/**/*.ts*'}
         ],
 
         tests: [
-            {pattern: 'test/browser/*Spec.ts'}
+            {pattern: '/test/browser/*Spec.ts'}
         ],
 
         preprocessors: {

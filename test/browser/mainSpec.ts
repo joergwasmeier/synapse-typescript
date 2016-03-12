@@ -8,12 +8,7 @@ import A_Test from "../../src/A_Test";
 describe("Basic Test", function() {
 
     beforeEach((done) => {
-       // this.container = document.createElement('div');
-      //  document.body.appendChild(this.container);
-
-        new A_Test();
         setTimeout(() => {
-//            new LoginShowEvent(this.container).dispatch();
             done();
         }, 200);
 

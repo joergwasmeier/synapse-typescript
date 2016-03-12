@@ -18,23 +18,26 @@ var nodeModules = fs.readdirSync('node_modules')
 var frontendConfig = {
     output: {
         path: path.join(__dirname, 'build'),
-        filename: 'bundle.js' // Template based on keys in entry above
+        filename: 'bundle.js'
     },
-    cache: true,
-    debug: false,
+    debug: true,
     devtool: 'source-map',
     resolve: {
-        // Add `.ts` and `.tsx` as a resolvable extension.
-        extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+        extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.jsx']
     },
     entry: [
-        './src/A_Main.ts' // Your appʼs entry point
+        './src/A_Main.ts'
     ],
     module: {
         loaders: [
-            { test: /\.js$/, loaders: ['babel?presets[]=es2015'] },
-            { test: /\.less$/, loader: 'style-loader!css-loader!less-loader',exclude: /node_modules/},
-            { test: /\.tsx?$/, loader: 'babel?presets[]=es2015!ts-loader!preprocess?+CLIENT',exclude: /node_modules/}
+            {   test: /\.less$/,
+                loader: 'style-loader!css-loader!less-loader',
+                exclude: /node_modules/
+            },
+            {   test: /\.tsx?$/,
+                loader: 'babel?presets[]=es2015!ts-loader!preprocess?+CLIENT',
+                exclude: /node_modules/
+            }
         ]
     }
 };
