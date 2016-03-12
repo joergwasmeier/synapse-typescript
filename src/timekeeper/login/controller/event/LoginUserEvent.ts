@@ -1,6 +1,6 @@
 
 import UserVo from "../../model/vo/UserVo";
-import FabaEvent from "fabalous/core/FabaEvent";
+import FabaEvent from "fabalous/dist/core/FabaEvent";
 
 export default class LoginUserEvent extends FabaEvent {
     public static LOGIN:String = "Login";

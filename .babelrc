@@ -1,8 +1,3 @@
 {
-  "plugins": [
-    ["babel-plugin-module-alias", [
-      { "src": "./src/utils", "expose": "utils" },
-      { "src": "./src/components", "expose": "components" }
-    ]]
-  ]
+    "presets": ["es2015", "react"]
 }

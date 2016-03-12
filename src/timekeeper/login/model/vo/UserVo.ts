@@ -1,6 +1,6 @@
 import Address from "./Address";
-import FabaValueObject from "fabalous/core/FabaValueObject";
-import FabaCore from "fabalous/FabaServer";
+import FabaValueObject from "fabalous/dist/core/FabaValueObject";
+import FabaCore from "fabalous/dist/core/FabaCore";
 
 export default class UserVo extends FabaValueObject {
 

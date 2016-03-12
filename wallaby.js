@@ -45,6 +45,7 @@ module.exports = function (wallaby) {
                 return pp.preprocess(file.content, {CLIENT:true}, {type: 'ts'});
             }
         },
+
         debug:true,
         postprocessor: wallabyPostprocessor,
 

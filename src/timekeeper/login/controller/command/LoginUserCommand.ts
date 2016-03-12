@@ -6,9 +6,9 @@ import Login from  "../../view/Login";
 import LoginUserEvent from "../event/LoginUserEvent";
 import LoginModel from "../../model/LoginModel";
 import UserVo from "../../model/vo/UserVo";
+import FabaCommand from "fabalous/dist/core/FabaCommand";
+import FabaWebApplication from "fabalous/dist/FabaWebApplication";
 
-import FabaCommand from "fabalous/core/FabaCommand";
-import FabaWebApplication from "fabalous/FabaWebApplication";
 
 export default class LoginUserCommand extends FabaCommand {
     execute(event:LoginUserEvent) {

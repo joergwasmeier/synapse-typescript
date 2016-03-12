@@ -1,4 +1,4 @@
-import FabaEvent from "fabalous/core/FabaEvent";
+import FabaEvent from "fabalous/dist/core/FabaEvent";
 
 export default class LoginShowEvent extends FabaEvent{
     target:any;

@@ -20,8 +20,8 @@ var frontendConfig = {
         path: path.join(__dirname, 'build'),
         filename: 'bundle.js' // Template based on keys in entry above
     },
-    cache: false,
-    debug: true,
+    cache: true,
+    debug: false,
     devtool: 'source-map',
     resolve: {
         // Add `.ts` and `.tsx` as a resolvable extension.
@@ -32,9 +32,9 @@ var frontendConfig = {
     ],
     module: {
         loaders: [
-            { test: /\.js$/, exclude: /node_modules/, loaders: ['babel!preprocess?+CLIENT'] },
+            { test: /\.js$/, loaders: ['babel?presets[]=es2015'] },
             { test: /\.less$/, loader: 'style-loader!css-loader!less-loader',exclude: /node_modules/},
-            { test: /\.tsx?$/, loader: 'babel?presets[]=es2015!ts-loader!preprocess?+CLIENT'}
+            { test: /\.tsx?$/, loader: 'babel?presets[]=es2015!ts-loader!preprocess?+CLIENT',exclude: /node_modules/}
         ]
     }
 };
@@ -96,7 +96,7 @@ function onBuild(done) {
 
 gulp.task('frontend-build', function(done) {
     var myConfig = frontendConfig;
-/*
+
     myConfig.plugins = [
         new webpack.DefinePlugin({
             "process.env": {
@@ -107,7 +107,7 @@ gulp.task('frontend-build', function(done) {
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin()
     ];
-*/
+
     webpack(myConfig).run(onBuild(done));
 });
 

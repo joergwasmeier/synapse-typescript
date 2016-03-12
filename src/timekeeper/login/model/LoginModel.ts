@@ -1,26 +1,26 @@
 import UserVo from "./vo/UserVo";
-import Bindable from "fabalous/decorators/Bindable";
-import FabaModel from "fabalous/core/FabaModel";
+import FabaBindable from "fabalous/dist/decorators/FabaBindable";
+import FabaModel from "fabalous/dist/core/FabaModel";
 
 export default class LoginModel extends FabaModel {
     private static _instance:LoginModel = new LoginModel();
 
-    @Bindable
+    @FabaBindable
     name:string = "dsdf dff";
 
-    @Bindable
+    @FabaBindable
     busy:boolean;
 
-    @Bindable
+    @FabaBindable
     userName:string;
 
-    @Bindable
+    @FabaBindable
     passWord:string;
 
-    @Bindable
+    @FabaBindable
     autoLogin:string;
 
-    @Bindable
+    @FabaBindable
     userData:UserVo;
 
     constructor() {

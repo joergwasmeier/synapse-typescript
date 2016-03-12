@@ -1,5 +1,5 @@
-import FabaValueObject from "fabalous/core/FabaValueObject";
-import FabaCore from "fabalous/FabaServer";
+import FabaValueObject from "fabalous/dist/core/FabaValueObject";
+import FabaCore from "fabalous/dist/core/FabaCore";
 
 export default class Address extends FabaValueObject {
 
