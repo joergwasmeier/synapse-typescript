@@ -16,7 +16,8 @@ module.exports = function (wallaby) {
 
     return {
         files: [
-            {pattern: 'src/**/*.ts*'}
+            {pattern: 'src/**/*.ts*'},
+            {pattern: 'node_modules/faba**/**/*.ts*'}
         ],
 
         tests: [
@@ -31,7 +32,10 @@ module.exports = function (wallaby) {
                     compact: false
                 });
             },
-            '**/*.ts': function(file) {
+            'src/**/*.ts': function(file) {
+                return pp.preprocess(file.content, {CLIENT:true}, {type: 'ts'});
+            },
+            'node_modules/faba**/**/*.ts': function(file) {
                 return pp.preprocess(file.content, {CLIENT:true}, {type: 'ts'});
             }
         },

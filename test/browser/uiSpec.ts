@@ -2,8 +2,8 @@ import * as TestUtils from 'react-addons-test-utils';
 
 //import LoginShowEvent from "../../src/timekeeper/login/controller/event/LoginShowEvent";
 import A_Test from "../../src/A_Test";
-import LoginShowEvent from "../../src/timekeeper/login/controller/event/LoginShowEvent";
-import LoginModel from "../../src/timekeeper/login/model/LoginModel";
+import LoginShowEvent from "fabalous-login/controller/event/LoginShowEvent";
+import LoginModel from "fabalous-login/model/LoginModel";
 //import LoginModel from "../../src/timekeeper/login/model/LoginModel";
 
 
@@ -24,7 +24,6 @@ describe("Basic Test", function() {
     it("Click Login Button", (done) => {
         var h = document.querySelector(".loginBt");
         TestUtils.Simulate.click(h);
-        console.log(LoginModel.getInstance().userName);
         setTimeout(() =>{
             expect(LoginModel.getInstance().userName).toBe("Super");
 

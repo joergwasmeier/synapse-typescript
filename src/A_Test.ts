@@ -1,6 +1,6 @@
-import FabaWebApplication from "fabalous/dist/FabaWebApplication";
-import LoginMediator from "./timekeeper/login/controller/LoginMediator";
-import FabaApiConnection from "fabalous/dist/transport/FabaApiConnection";
+import LoginMediator from "fabalous-login/controller/LoginMediator";
+import FabaWebApplication from "fabalous/runtimes/FabaWebApplication";
+import FabaApiConnection from "fabalous/transport/FabaApiConnection";
 
 export default class A_Test extends FabaWebApplication {
     constructor() {

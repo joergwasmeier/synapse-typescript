@@ -1,19 +1,11 @@
 var wallabyWebpack = require('wallaby-webpack');
 var pp = require('preprocess');
+var webpack = require('webpack');
 
 var wallabyPostprocessor = wallabyWebpack({
-    entryPatterns: [
-        "test/node/mainSpec.js*"
-    ],
-
-    module: {
-        loaders: [
-            { test: /\.less$/, loader: 'style-loader!css-loader!less-loader',exclude: /node_modules/}
-        ]
-    },
-    resolve: {
-        extensions: ['', '.js', '.jsx']
-    }
+    plugins: [
+        new webpack.NormalModuleReplacementPlugin(/\.(gif|png|less|css)$/, 'node-noop')
+    ]
 });
 
 
@@ -24,11 +16,11 @@ module.exports = function (wallaby) {
     return {
         files: [
             {pattern: 'src/**/*.ts*'},
-            {pattern: 'src/**/*.less'}
+            {pattern: 'node_modules/faba**/**/*.ts*'}
         ],
 
         tests: [
-            {pattern: 'test/node/mainSpec.ts'}
+            {pattern: 'test/node/*Spec.ts'}
         ],
 
         preprocessors: {
@@ -42,6 +34,9 @@ module.exports = function (wallaby) {
             'src/**/*.ts': function(file) {
                 return pp.preprocess(file.content, {SERVER:true}, {type: 'ts'});
             },
+            'node_modules/faba**/**/*.ts': function(file) {
+                return pp.preprocess(file.content, {SERVER:true}, {type: 'ts'});
+            }
         },
 
         //postprocessor: wallabyPostprocessor,

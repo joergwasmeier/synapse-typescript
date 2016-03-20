@@ -1,22 +1,31 @@
-//import "babel-polyfill";
+import FabaApiConnection from "fabalous/transport/FabaApiConnection";
+import FabaWebApplication from "fabalous/runtimes/FabaWebApplication";
+import LoginShowEvent from "fabalous-login/controller/event/LoginShowEvent";
 
-import LoginMediator from "./timekeeper/login/controller/LoginMediator";
-//import FabaApiConnection from "fabalous/transport/FabaApiConnection";
-//import LoginShowEvent from "./timekeeper/login/controller/event/LoginShowEvent";
-import FabaWebApplication from "fabalous/dist/FabaWebApplication";
-import LoginShowEvent from "./timekeeper/login/controller/event/LoginShowEvent";
 
+declare var System;
 
 class A_Main extends FabaWebApplication {
-    constructor(){
+    constructor() {
         super();
 
-        //FabaWebApplication.addServerEndPoint(new FabaApiConnection( "http://localhost:3000/"), "api");
 
-        this.addMediator(new LoginMediator());
 
-        new LoginShowEvent(document.getElementById("container")).dispatch();
-        //console.log("test");
+        FabaWebApplication.addServerEndPoint(new FabaApiConnection("http://localhost:3000/"), "api");
+        //this.addMediator(new LoginMediator());
+
+
+
+        System.import('fabalous-login/controller/LoginMediator').then((m) => {
+            this.addMediator(new m.default());
+
+            new LoginShowEvent(document.getElementById("container")).dispatch();
+
+//            System.import('fabalous-login/controller/event/LoginShowEvent').then((m) => {
+  //              console.log(new m.default(document.getElementById("container")).dispatch());
+    //        });
+        });
+
 
     }
 }

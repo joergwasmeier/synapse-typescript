@@ -1,16 +1,21 @@
 import "babel-polyfill";
+import "source-map-support/register"
 
-import LoginUserEvent from "./timekeeper/login/controller/event/LoginUserEvent";
+import FabaMongoConnection from "fabalous/nodejs/mongodb/FabaMongoConnection";
+import FabaServer from "fabalous/runtimes/FabaServer";
+import LoginMediator from "fabalous-login/controller/LoginMediator";
+import LoginModel from "fabalous-login/model/LoginModel";
 import UserCollection from "./timekeeper/common/collections/UserCollection";
-import UserVo from "./timekeeper/login/model/vo/UserVo";
-import LoginMediator from "./timekeeper/login/controller/LoginMediator";
-import SynapseServer from "fabalous/src/SynapseServer";
-import SynapseMongoConnection from "fabalous/src/nodejs/mongodb/SynapseMongoConnection";
 
-export default class S_Main extends SynapseServer {
+export default class S_Main extends FabaServer {
    constructor() {
-       require('source-map-support').install();
+       //trace("");
+       setTimeout( () => {
+           LoginModel.getInstance().userCollection = new UserCollection();
+       },700);
 
+
+       console.log("test");
        super();
         // DB Connection
 
@@ -20,9 +25,9 @@ export default class S_Main extends SynapseServer {
 
         // Progress Events
 
-        this.addDatabaseConnection(new SynapseMongoConnection("mongodb://localhost:27017/timekeeper"));
+        this.addDatabaseConnection(new FabaMongoConnection("mongodb://localhost:27017/timekeeper"));
         this.addMediator(new LoginMediator());
     }
 }
 
-//new S_Main();
+new S_Main();

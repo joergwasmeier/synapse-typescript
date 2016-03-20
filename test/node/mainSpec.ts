@@ -1,5 +1,5 @@
 import S_Main from "../../src/S_Main";
-import LoginUserEvent from "../../src/timekeeper/login/controller/event/LoginUserEvent";
+import LoginUserEvent from "fabalous-login/controller/event/LoginUserEvent";
 
 describe("Basic Test", function() {
     beforeEach(() => {
@@ -9,20 +9,18 @@ describe("Basic Test", function() {
     it("Login Wrong", (done) => {
         setTimeout(function() {
             new LoginUserEvent("testerre", "test").dispatch((ev:LoginUserEvent) => {
-                console.log("tester dsfsdf");
                 expect(ev.loggedIn).toBe(false);
                 done();
             });
-        },200);
+        },1000);
     });
 
     it("Login Test", (done) => {
         setTimeout(function() {
             new LoginUserEvent("test", "test").dispatch((ev:LoginUserEvent) => {
-                console.log("test");
                 expect(ev.loggedIn).toBe(true);
                 done();
             });
-        },200);
+        },1200);
     });
 });

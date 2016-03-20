@@ -1,6 +1,6 @@
 import {Collection, Db, Cursor} from "mongodb";
-import UserVo from "../../login/model/vo/UserVo";
 import FabaMongoCollection from "fabalous/nodejs/mongodb/FabaMongoCollection";
+import UserVo from "fabalous-login/model/vo/UserVo";
 
 export default class UserCollection extends FabaMongoCollection{
     constructor(){
@@ -8,9 +8,8 @@ export default class UserCollection extends FabaMongoCollection{
     }
 
     async getUser(userName:string):Promise<Array<UserVo>>{
-        return new Promise<Array<UserVo>>(resolve => {
+        return new Promise<Array<any>>(resolve => {
             this.find({username:userName}, {}, (err,result:Cursor) => {
-
                 result.toArray((ee,docs)=>{
                     resolve(docs);
                 })
@@ -20,16 +19,14 @@ export default class UserCollection extends FabaMongoCollection{
     }
 
     async createtUser(userName:string){
-        //console.log("createtUser");
+        return new Promise<boolean>(resolve => {
+            var user:UserVo = new UserVo();
+            user.username = userName;
 
-       // console.log(this.insert);
-
-        var user:UserVo = new UserVo();
-        user.username = userName;
-
-        this.insert(user, {serializeFunctions:true}, (err,result) => {
-            //console.log(err);
-            //console.log(result);
+            this.insert(user, {serializeFunctions:true}, (err,result) => {
+                if (result) resolve(true);
+                else resolve(false);
+            });
         });
     }
 
