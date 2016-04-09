@@ -5,6 +5,8 @@ var path = require('path');
 
 var frontendConfig = require("./../webpack/webpack.frontend.config");
 
+var CompressionPlugin = require('compression-webpack-plugin');
+
 function onBuild(done) {
     return function(err, stats) {
         if(err)console.error('Error', err);
@@ -47,7 +49,13 @@ gulp.task('frontend-build', function(done) {
             'process.env': { NODE_ENV: JSON.stringify('production') }
         }),
 
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            minChunks: Infinity,
+            filename: 'vendor.bundle.js'
+        }),
+        new CompressionPlugin()
     ];
 
     webpack(myConfig).run(onBuild(done));

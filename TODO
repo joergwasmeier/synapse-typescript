@@ -1,0 +1,37 @@
+------ Web
+1. Add react-router
+2. Route with react-router
+3. Split routes
+4. assets managment
+------
+
+------ Electron
+1. Create a Dist on build
+2. Create Debug version
+------
+
+------ Cordova
+1. Create iOS / Android Dist on build
+2. Create Debug version
+------
+
+------ NodeJS
+1. Implement Koa
+2. Server side rendering
+------
+
+------ MongoDB
+1. Download and install
+2. Run on start
+------
+
+------ RethingDB
+1. Download and install
+2. Run on start
+------
+
+------ Distribution
+1. Publish everything over npm?!
+------
+
+
